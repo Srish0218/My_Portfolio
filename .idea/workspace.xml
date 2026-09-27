@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2eee785c-33e3-460b-b528-895fe4e599f3" name="Changes" comment="27 sept 2026 commit">
-      <change beforePath="$PROJECT_DIR$/backend/app/data/portfolio.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/data/portfolio.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.css" afterDir="false" />
+    <list default="true" id="2eee785c-33e3-460b-b528-895fe4e599f3" name="Changes" comment="commit to display">
       <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,25 +15,37 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Srish0218"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Srish0218/My_Portfolio.git",
+    "accountId": "1c516ef5-770f-44cc-9f02-363fec816df6"
+  }
+}]]></component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0000000000000007" />
-      <entry key="S30" value="1.0000088024303255" />
-      <entry key="S60" value="1.0029669038247138" />
-      <entry key="M2" value="1.054813613017015" />
-      <entry key="M5" value="1.4719616301368923" />
-      <entry key="M10" value="2.884168089634817" />
-      <entry key="M15" value="4.6205546966924445" />
-      <entry key="M30" value="9.666446702686674" />
-      <entry key="H1" value="16.769179969580826" />
-      <entry key="H2" value="24.31361334321136" />
-      <entry key="H4" value="30.56178295025961" />
-      <entry key="D1" value="38.12247926375113" />
-      <entry key="W1" value="39.72288220213456" />
+      <entry key="MS100" value="1.0211251523839782" />
+      <entry key="MS500" value="1.6727171519833992" />
+      <entry key="S2" value="3.138730283118508" />
+      <entry key="S5" value="4.050253403732626" />
+      <entry key="S10" value="4.480578560200475" />
+      <entry key="S30" value="4.815730829737925" />
+      <entry key="S60" value="4.906389258689673" />
+      <entry key="M2" value="4.952818874014498" />
+      <entry key="M5" value="4.9814811329873585" />
+      <entry key="M10" value="5.040630583079263" />
+      <entry key="M15" value="5.303691377026404" />
+      <entry key="M30" value="7.500742214254549" />
+      <entry key="H1" value="13.533107249885463" />
+      <entry key="H2" value="22.34473543122225" />
+      <entry key="H4" value="30.81315139987203" />
+      <entry key="D1" value="42.06453287757846" />
+      <entry key="W1" value="44.563497101520916" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -57,23 +67,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.003852471501927183" />
-      <entry key="MS500" value="0.32896363125725203" />
-      <entry key="S2" value="0.7573331579384879" />
-      <entry key="S5" value="0.8947769516844151" />
-      <entry key="S10" value="0.9459265043778065" />
-      <entry key="S30" value="0.9816492927661193" />
-      <entry key="S60" value="0.9937442135252693" />
-      <entry key="M2" value="1.050185471387085" />
-      <entry key="M5" value="1.469617169696584" />
-      <entry key="M10" value="2.8813074816014423" />
-      <entry key="M15" value="4.617340579736644" />
-      <entry key="M30" value="9.66345074020752" />
-      <entry key="H1" value="16.767039488844926" />
-      <entry key="H2" value="24.312312786121712" />
-      <entry key="H4" value="30.561062221071047" />
-      <entry key="D1" value="38.12234795702013" />
-      <entry key="W1" value="39.72286314912237" />
+      <entry key="MS100" value="0.9933423835437997" />
+      <entry key="MS500" value="1.6638463770596277" />
+      <entry key="S2" value="3.134270973447951" />
+      <entry key="S5" value="4.047860268850898" />
+      <entry key="S10" value="4.479234326337091" />
+      <entry key="S30" value="4.815243981124949" />
+      <entry key="S60" value="4.906140561513234" />
+      <entry key="M2" value="4.952693172935808" />
+      <entry key="M5" value="4.9814298152769165" />
+      <entry key="M10" value="5.040555504991749" />
+      <entry key="M15" value="5.303458799946005" />
+      <entry key="M30" value="7.499957700867457" />
+      <entry key="H1" value="13.532013615551653" />
+      <entry key="H2" value="22.34380548573227" />
+      <entry key="H4" value="30.81254158798552" />
+      <entry key="D1" value="42.064405038052506" />
+      <entry key="W1" value="44.56347809973936" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
@@ -155,7 +165,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1790498189923</updated>
-      <workItem from="1790498190958" duration="11704000" />
+      <workItem from="1790498190958" duration="15369000" />
     </task>
     <task id="LOCAL-00001" summary="27 sept 2026 commit">
       <option name="closed" value="true" />
@@ -165,7 +175,87 @@
       <option name="project" value="LOCAL" />
       <updated>1790507143239</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="27 sept 2026 commit">
+      <option name="closed" value="true" />
+      <created>1790512424446</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1790512424446</updated>
+    </task>
+    <task id="LOCAL-00003" summary="27 sept 2026 commit">
+      <option name="closed" value="true" />
+      <created>1790512701536</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1790512701536</updated>
+    </task>
+    <task id="LOCAL-00004" summary="27 sept 2026 commit">
+      <option name="closed" value="true" />
+      <created>1790512717759</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1790512717759</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Set live portfolio API URL">
+      <option name="closed" value="true" />
+      <created>1790514636279</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1790514636279</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Set live portfolio API URL">
+      <option name="closed" value="true" />
+      <created>1790514813062</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1790514813062</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Set live portfolio API URL">
+      <option name="closed" value="true" />
+      <created>1790514820011</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1790514820011</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Set live portfolio API URL">
+      <option name="closed" value="true" />
+      <created>1790514930995</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1790514930995</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Set live portfolio API URL">
+      <option name="closed" value="true" />
+      <created>1790515145542</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1790515145542</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;backend/app/main.py">
+      <option name="closed" value="true" />
+      <created>1790515175591</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1790515175591</updated>
+    </task>
+    <task id="LOCAL-00011" summary="commit to display">
+      <option name="closed" value="true" />
+      <created>1790515484573</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1790515484573</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,7 +263,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="27 sept 2026 commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="27 sept 2026 commit" />
+    <MESSAGE value="Set live portfolio API URL" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;backend/app/main.py" />
+    <MESSAGE value="commit to display" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit to display" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

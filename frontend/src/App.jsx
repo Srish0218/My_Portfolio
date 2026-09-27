@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-const API_URL = "https://my-portfolio-s5rd.onrender.com/api/portfolio";
-
+const API_URL = "/portfolio.json";
 function App() {
   const [profile, setProfile] = useState(null);
   const [apiError, setApiError] = useState("");
