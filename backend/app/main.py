@@ -3,20 +3,29 @@ from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.middleware import Middleware
 
-app = FastAPI(title="Srishti Jaitly Portfolio API")
+allowed_origins = [
+    "http://localhost:5173",
+    "https://srishti-portfolio-mocha.vercel.app",
+    "https://srishti-jaitly-portfolio.vercel.app",
+]
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "https://srishti-jaitly-portfolio.vercel.app",
-    ],
-    allow_methods=["GET"],
-    allow_headers=["*"],
+middleware = [
+    Middleware(
+        CORSMiddleware,
+        allow_origins=allowed_origins,
+        allow_methods=["GET"],
+        allow_headers=["*"],
+    )
+]
+
+app = FastAPI(
+    title="Srishti Jaitly Portfolio API",
+    middleware=middleware,
 )
 
-DATA_FILE = Path(__file__).parent / "data" / "portfolio.json"
+DATA_FILE = Path(__file__).resolve().parent / "data" / "portfolio.json"
 
 
 @app.get("/api/health")
