@@ -78,7 +78,7 @@ function App() {
     elements.forEach((element) => observer.observe(element));
 
     return () => observer.disconnect();
-  }, [profile]);
+  }, [profile, activeFilter, projectSearch]);
 
   useEffect(() => {
     function showClickRipple(event) {
@@ -184,12 +184,13 @@ function App() {
     return email.startsWith("mailto:") ? email : `mailto:${email}`;
   }
 
-  const contactLinks =
-    ui.contact?.socialLinks || [
-      { key: "email", label: "Email" },
-      { key: "linkedin", label: "LinkedIn" },
-      { key: "github", label: "GitHub" },
-    ];
+  const contactLinks = (
+  ui.contact?.socialLinks || [
+    { key: "email", label: "Email" },
+    { key: "linkedin", label: "LinkedIn" },
+    { key: "github", label: "GitHub" },
+  ]
+).filter((item) => item.key !== "email");
 
   return (
     <div className="site-shell">
@@ -308,11 +309,6 @@ function App() {
               {links.linkedin && (
                 <a href={links.linkedin} target="_blank" rel="noreferrer">
                   LinkedIn <span>↗</span>
-                </a>
-              )}
-              {links.email && (
-                <a href={getEmailUrl(links.email)}>
-                  Email <span>↗</span>
                 </a>
               )}
             </div>
