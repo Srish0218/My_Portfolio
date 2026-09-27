@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2eee785c-33e3-460b-b528-895fe4e599f3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/MyPortfolio.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    <list default="true" id="2eee785c-33e3-460b-b528-895fe4e599f3" name="Changes" comment="27 sept 2026 commit">
+      <change beforePath="$PROJECT_DIR$/backend/app/data/portfolio.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/data/portfolio.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,23 +19,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000002367717016" />
-      <entry key="MS500" value="1.0473005247802993" />
-      <entry key="S2" value="1.4663548414857115" />
-      <entry key="S5" value="1.7370331066841453" />
-      <entry key="S10" value="1.859330251782059" />
-      <entry key="S30" value="2.044180786311885" />
-      <entry key="S60" value="2.2811014771442513" />
-      <entry key="M2" value="2.5407275372729083" />
-      <entry key="M5" value="2.7841569862132847" />
-      <entry key="M10" value="2.8864248583960475" />
-      <entry key="M15" value="2.9373964046302032" />
-      <entry key="M30" value="3.347216431828888" />
-      <entry key="H1" value="4.946628584052517" />
-      <entry key="H2" value="7.4245922133329145" />
-      <entry key="H4" value="9.654267700252484" />
-      <entry key="D1" value="12.343989629999054" />
-      <entry key="W1" value="12.903544290652066" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0000000000000007" />
+      <entry key="S30" value="1.0000088024303255" />
+      <entry key="S60" value="1.0029669038247138" />
+      <entry key="M2" value="1.054813613017015" />
+      <entry key="M5" value="1.4719616301368923" />
+      <entry key="M10" value="2.884168089634817" />
+      <entry key="M15" value="4.6205546966924445" />
+      <entry key="M30" value="9.666446702686674" />
+      <entry key="H1" value="16.769179969580826" />
+      <entry key="H2" value="24.31361334321136" />
+      <entry key="H4" value="30.56178295025961" />
+      <entry key="D1" value="38.12247926375113" />
+      <entry key="W1" value="39.72288220213456" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -62,23 +57,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="3.3297751488453707E-7" />
-      <entry key="MS500" value="0.0851304322853749" />
-      <entry key="S2" value="0.906806263097468" />
-      <entry key="S5" value="1.4573418111638665" />
-      <entry key="S10" value="1.7080244636785793" />
-      <entry key="S30" value="1.9908511955130708" />
-      <entry key="S60" value="2.2539473488699677" />
-      <entry key="M2" value="2.526985364219623" />
-      <entry key="M5" value="2.778610005470714" />
-      <entry key="M10" value="2.8836417884070364" />
-      <entry key="M15" value="2.9355387266681756" />
-      <entry key="M30" value="3.3462856309643882" />
-      <entry key="H1" value="4.946161157870516" />
-      <entry key="H2" value="7.424357072231315" />
-      <entry key="H4" value="9.654149500787051" />
-      <entry key="D1" value="12.343969804698578" />
-      <entry key="W1" value="12.903541454752169" />
+      <entry key="MS100" value="0.003852471501927183" />
+      <entry key="MS500" value="0.32896363125725203" />
+      <entry key="S2" value="0.7573331579384879" />
+      <entry key="S5" value="0.8947769516844151" />
+      <entry key="S10" value="0.9459265043778065" />
+      <entry key="S30" value="0.9816492927661193" />
+      <entry key="S60" value="0.9937442135252693" />
+      <entry key="M2" value="1.050185471387085" />
+      <entry key="M5" value="1.469617169696584" />
+      <entry key="M10" value="2.8813074816014423" />
+      <entry key="M15" value="4.617340579736644" />
+      <entry key="M30" value="9.66345074020752" />
+      <entry key="H1" value="16.767039488844926" />
+      <entry key="H2" value="24.312312786121712" />
+      <entry key="H4" value="30.561062221071047" />
+      <entry key="D1" value="38.12234795702013" />
+      <entry key="W1" value="39.72286314912237" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
@@ -160,12 +155,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1790498189923</updated>
-      <workItem from="1790498190958" duration="6514000" />
+      <workItem from="1790498190958" duration="11704000" />
     </task>
+    <task id="LOCAL-00001" summary="27 sept 2026 commit">
+      <option name="closed" value="true" />
+      <created>1790507143239</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1790507143239</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="27 sept 2026 commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="27 sept 2026 commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,48 +1,200 @@
 {
   "name": "Srishti Jaitly",
-  "role": "Data Analyst",
-  "about": "I build useful data workflows and AI tools with Python, SQL, and language models. At TCS, I work on enterprise data processes. Previously, at WyzMindz, I built customer experience and NLP solutions.",
+  "role": "Data Scientist",
+  "location": "LUDHIANA, INDIA",
+  "about": "I’m a data and AI professional at Tata Consultancy Services, working with Data360 Analyze, Oracle Data Warehouse, Python, and SQL to build reliable data pipelines and automate workflows. Previously, I developed NLP and LLM solutions at WyzMindz and won first place at the SuryoJasvi AI Festival 2025.",
+  "branding": {
+    "monogram": "SJ",
+    "subtitle": "DATA · AI · AUTOMATION",
+    "homeLabel": "Srishti Jaitly home"
+  },
   "links": {
     "github": "https://github.com/SrishtiJaitly",
     "linkedin": "https://www.linkedin.com/in/Srishti-Jaitly/",
     "resume": "https://drive.google.com/drive/u/0/folders/17ThnbVthhsvUSbwZK4zU5PRvqfSZk90W",
     "email": "srishtijaitly2002@gmail.com"
   },
+  "stats": [
+    {
+      "value": "30%",
+      "label": "faster data processing"
+    },
+    {
+      "value": "60%",
+      "label": "less manual effort"
+    },
+    {
+      "value": "1st",
+      "label": "AI festival winner"
+    }
+  ],
+  "ui": {
+    "navigation": [
+      {
+        "id": "about",
+        "label": "About"
+      },
+      {
+        "id": "projects",
+        "label": "Projects"
+      },
+      {
+        "id": "experience",
+        "label": "Experience"
+      },
+      {
+        "id": "achievement",
+        "label": "Achievement"
+      },
+      {
+        "id": "skills",
+        "label": "Skills"
+      },
+      {
+        "id": "education",
+        "label": "Education"
+      }
+    ],
+    "navigationContact": "Contact",
+    "menu": {
+      "open": "Menu",
+      "close": "Close"
+    },
+    "theme": {
+      "switchToLight": "Switch to light theme",
+      "switchToDark": "Switch to dark theme",
+      "lightIcon": "☀",
+      "darkIcon": "☾"
+    },
+    "hero": {
+      "greeting": "Hi, I’m",
+      "nameEnding": ".",
+      "projectsButton": "Explore my work ↓",
+      "resumeButton": "View résumé ↗",
+      "artDescription": "Srishti Jaitly initials illustration",
+      "artSymbol": "✳",
+      "artLineOne": "CURIOUS BY NATURE",
+      "artLineTwo": "ANALYTICAL BY CHOICE"
+    },
+    "brand": {
+      "homeLabel": "Srishti Jaitly home"
+    },
+    "projects": {
+      "allFilter": "All",
+      "typeLabel": "PROJECT",
+      "defaultIcon": "✳",
+      "linkLabel": "View project"
+    },
+    "sections": {
+      "about": {
+        "label": "01 / ABOUT",
+        "titleLineOne": "Curious by nature.",
+        "titleLineTwo": "Analytical by choice."
+      },
+      "projects": {
+        "label": "02 / SELECTED WORK",
+        "titleLineOne": "Projects with",
+        "titleLineTwo": "a purpose.",
+        "description": "A few ways I’ve used data and AI to solve practical problems."
+      },
+      "experience": {
+        "label": "03 / EXPERIENCE",
+        "titleLineOne": "Where I’ve",
+        "titleLineTwo": "made a difference."
+      },
+      "achievement": {
+        "label": "04 / ACHIEVEMENT",
+        "projectPrefix": "Winning project:"
+      },
+      "skills": {
+        "label": "05 / TOOLKIT",
+        "titleLineOne": "Tools I use",
+        "titleLineTwo": "to make things."
+      },
+      "education": {
+        "label": "06 / EDUCATION"
+      },
+      "contact": {
+        "label": "07 / LET’S CONNECT"
+      }
+    },
+    "contact": {
+      "intro": "HAVE A QUESTION OR AN INTERESTING DATA CHALLENGE?",
+      "titleLineOne": "Let’s make ",
+      "titleLineTwo": "something useful.",
+      "emailButton": "Email me",
+      "socialLinks": [
+        {
+          "key": "email",
+          "label": "Email"
+        },
+        {
+          "key": "linkedin",
+          "label": "LinkedIn"
+        },
+        {
+          "key": "github",
+          "label": "GitHub"
+        }
+      ]
+    },
+    "footer": {
+      "credit": "Designed with curiosity",
+      "backToTop": "Back to top"
+    }
+  },
   "projects": [
     {
       "title": "CareerGenie.ai",
       "type": "AI",
+      "icon": "✳",
       "description": "An AI resume and career assistant that suggests roles, highlights skill gaps, and offers career insights.",
       "result": "Analyzed 10+ resumes; improved job-search efficiency by 40%.",
-      "tools": ["LangChain", "LLMs", "NLP"],
+      "tools": [
+        "LangChain",
+        "LLMs",
+        "NLP"
+      ],
       "url": "https://github.com/SrishtiJaitly"
     },
     {
       "title": "EinsteinAI",
       "type": "AI",
+      "icon": "✦",
       "description": "A physics learning assistant using Gemini 1.5 Flash and a context-aware Streamlit interface.",
       "result": "95% query accuracy and 60% fewer irrelevant answers.",
-      "tools": ["Gemini", "Streamlit", "Python"],
+      "tools": [
+        "Gemini",
+        "Streamlit",
+        "Python"
+      ],
       "url": "https://github.com/SrishtiJaitly"
     },
     {
       "title": "Customer Experience Insights API",
       "type": "Automation",
+      "icon": "↗",
       "description": "A FastAPI service connecting customer experience analysis, language models, and SQL.",
       "result": "Automated conversational insights and improved audit accuracy by 40%.",
-      "tools": ["FastAPI", "LangChain", "SQL"],
+      "tools": [
+        "FastAPI",
+        "LangChain",
+        "SQL"
+      ],
       "url": "https://github.com/SrishtiJaitly"
     }
   ],
   "experience": [
     {
-      "role": "Data Analyst",
+      "role": "System engineer",
       "company": "Tata Consultancy Services",
       "dates": "April 2025 — Present",
       "points": [
-        "Support enterprise data integration, transformation, and automation using Data360 Analyze.",
-        "Build Python and SQL pipelines with ODW and SSIS integration, improving processing efficiency by about 30%.",
-        "Improved reporting workflows, reducing manual effort by 25%+."
+        "Working on Data360 Analyze, focusing on data integration, transformation, and automation across enterprise workflows. ",
+"Collaborate with cross-functional teams to build and optimize data pipelines ensuring high data quality and reliability.",
+        "Conduct in-depth data analysis and visualization to support business intelligence and decision-making. ",
+"Trained in Python for data analytics, Snowflake Data Warehouse, and SQL optimization, enabling efficient large-scale data handling. ",
+"Enhancing automation scripts and data orchestration processes to improve reporting efficiency and reduce manual intervention."
       ]
     },
     {
@@ -50,33 +202,62 @@
       "company": "WyzMindz Solutions Pvt. Ltd.",
       "dates": "May 2024 — April 2025",
       "points": [
-        "Built a FastAPI service for customer experience analysis using LLMs and SQL.",
-        "Automated three client websites, reducing manual effort by 60%.",
-        "Created NLP workflows that reduced processing time by 50%."
+        "Independently managed a client project, automating workflows for 3 websites and delivering solutions ahead of deadlines. ",
+ "Automated 2 additional websites for internal organizational workflows, streamlining operations and improving efficiency. ",
+ "Created Python scripts using requests and pandas libraries to download and organize audio files, enhancing data accessibilityand usability.",
+  "Developed machine learning models and NLP techniques, enhancing customer transcript evaluations and improving audit accuracy by 40%.",
+ "Engineered prompt-based solutions using ChatGPT, Gemini, and Mistral models, reducing communication-related complaints by 25%.",
+ "Automated workflows for 2 clients using Selenium, including OTP-based login, field interactions (placeholders, date pickers, dropdowns), and report generation, streamlining processes and saving time by 50%.",
+ "Integrated Vennify LLM for grammar correction, boosting error detection and correction efficiency by 30%.",
+ "Implemented fuzzy matching algorithms with FuzzyWuzzy, increasing data accuracy and reducing errors by 20%."
       ]
     }
   ],
   "achievement": {
-    "title": "SuryoJasvi AI Festival 2025",
-    "award": "First Place · ₹50,000",
-    "project": "Automated Insight with Assured Brand Integrity"
-  },
+  "title": "SuryoJasvi AI Festival 2025",
+  "award": "First Place · ₹50,000",
+  "project": "Automated Insight with Assured Brand Integrity",
+  "description": "Our team won First Place 🥇 at the SuryoJasvi AI Festival 2025 and received a ₹50,000 prize for our project, “Automated Insight with Assured Brand Integrity.”\n\nWe built an AI-driven automation API to process and evaluate business data using:\n• LangChain and Gemini for contextual analysis\n• Hugging Face NLP models for classification and insights\n• Python rules tailored to business requirements\n• Pandas for data processing\n• FastAPI for the API service\n• MS SQL for input and output data\n• n8n for continuous workflow automation\n\nThe API evaluates database records using AI and rule-based checks, then stores the results. It can run on demand or continuously. The project strengthened our technical and teamwork skills and showed how LLMs, automation, and business logic can work together."
+},
   "skills": [
     {
       "title": "Code & data",
-      "skills": ["Python", "SQL", "MySQL", "Pandas", "Excel"]
+      "skills": [
+        "Python",
+        "SQL",
+        "MySQL",
+        "Pandas",
+        "Excel"
+      ]
     },
     {
       "title": "AI & language",
-      "skills": ["NLP", "Machine Learning", "LLMs", "LangChain", "Hugging Face"]
+      "skills": [
+        "NLP",
+        "Machine Learning",
+        "LLMs",
+        "LangChain",
+        "Hugging Face"
+      ]
     },
     {
       "title": "Automation",
-      "skills": ["FastAPI", "Selenium", "BeautifulSoup", "Requests", "n8n"]
+      "skills": [
+        "FastAPI",
+        "Selenium",
+        "BeautifulSoup",
+        "Requests",
+        "n8n"
+      ]
     },
     {
       "title": "Tools",
-      "skills": ["Streamlit", "SQL Workbench", "SQL Developer", "PyCharm"]
+      "skills": [
+        "Streamlit",
+        "SQL Workbench",
+        "SQL Developer",
+        "PyCharm"
+      ]
     }
   ],
   "education": [

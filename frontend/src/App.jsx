@@ -1,45 +1,67 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
+const API_URL = "http://127.0.0.1:8000/api/portfolio";
+
 function App() {
   const [profile, setProfile] = useState(null);
   const [apiError, setApiError] = useState("");
-  const [filter, setFilter] = useState("All");
+  const [activeFilter, setActiveFilter] = useState("All");
   const [menuOpen, setMenuOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const [lightTheme, setLightTheme] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [showTop, setShowTop] = useState(false);
+  const [showTopButton, setShowTopButton] = useState(false);
 
-  // Load portfolio content from the Python API.
   useEffect(() => {
-    let cancelled = false;
+    let isMounted = true;
 
-    fetch("http://127.0.0.1:8000/api/portfolio")
+    fetch(API_URL)
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Portfolio API request failed");
+          throw new Error("Portfolio request failed");
         }
         return response.json();
       })
       .then((data) => {
-        if (!cancelled) setProfile(data);
+        if (isMounted) setProfile(data);
       })
       .catch(() => {
-        if (!cancelled) {
+        if (isMounted) {
           setApiError(
-            "Could not connect to the portfolio API. Check that the Python server is running."
+            "Could not load the portfolio. Check that the Python API is running.",
           );
         }
       });
 
     return () => {
-      cancelled = true;
+      isMounted = false;
     };
   }, []);
 
-  // Animate marked elements when they scroll into view.
   useEffect(() => {
-    if (!profile) return;
+    function updateScroll() {
+      const scrollableHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const progress =
+        scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0;
+
+      setScrollProgress(progress);
+      setShowTopButton(window.scrollY > 500);
+    }
+
+    window.addEventListener("scroll", updateScroll, { passive: true });
+    updateScroll();
+
+    return () => window.removeEventListener("scroll", updateScroll);
+  }, []);
+
+  useEffect(() => {
+    const elements = document.querySelectorAll(".reveal");
+
+    if (!("IntersectionObserver" in window)) {
+      elements.forEach((element) => element.classList.add("is-visible"));
+      return undefined;
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -50,261 +72,325 @@ function App() {
           }
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0.12 },
     );
 
-    document.querySelectorAll(".animate-in").forEach((element, index) => {
-      element.style.setProperty("--reveal-delay", `${(index % 4) * 90}ms`);
-      observer.observe(element);
-    });
+    elements.forEach((element) => observer.observe(element));
 
     return () => observer.disconnect();
   }, [profile]);
 
-  // Update the reading progress bar and back-to-top button while scrolling.
   useEffect(() => {
-    const updateScroll = () => {
-      const pageHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
+    function showClickRipple(event) {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+      }
 
-      setScrollProgress(pageHeight > 0 ? window.scrollY / pageHeight : 0);
-      setShowTop(window.scrollY > 500);
-    };
+      const ripple = document.createElement("span");
+      ripple.className = "click-ripple";
+      ripple.style.left = `${event.clientX}px`;
+      ripple.style.top = `${event.clientY}px`;
 
-    window.addEventListener("scroll", updateScroll, { passive: true });
-    updateScroll();
+      document.body.appendChild(ripple);
+      ripple.addEventListener("animationend", () => ripple.remove(), {
+        once: true,
+      });
+    }
 
-    return () => window.removeEventListener("scroll", updateScroll);
+    document.addEventListener("click", showClickRipple);
+
+    return () => document.removeEventListener("click", showClickRipple);
   }, []);
 
-  if (!profile) {
+  useEffect(() => {
+    document.body.classList.toggle("light-theme", lightTheme);
+
+    return () => document.body.classList.remove("light-theme");
+  }, [lightTheme]);
+
+  if (apiError) {
     return (
-      <main className="api-message">
-        <p>{apiError || "Connecting to your portfolio…"}</p>
-        {apiError && (
-          <button onClick={() => window.location.reload()}>Try again</button>
-        )}
+      <main className="app-message">
+        <p>{apiError}</p>
+        <p>
+          Start your backend, then refresh this page. The API address is{" "}
+          <code>{API_URL}</code>.
+        </p>
       </main>
     );
   }
 
-  const projects = profile.projects || [];
-  const visibleProjects =
-    filter === "All"
-      ? projects
-      : projects.filter((project) => project.type === filter);
+  if (!profile) {
+    return (
+      <main className="app-message loading-message">
+        <span className="loading-orb" aria-hidden="true" />
+        <p>Loading portfolio…</p>
+      </main>
+    );
+  }
 
-  const navItems = [
-    "About",
-    "Projects",
-    "Experience",
-    "Achievement",
-    "Skills",
-    "Education",
+  const ui = profile.ui || {};
+  const links = profile.links || {};
+  const branding = profile.branding || {};
+  const navigation = ui.navigation || [];
+  const sections = ui.sections || {};
+  const projects = profile.projects || [];
+  const experience = profile.experience || [];
+  const skills = profile.skills || [];
+  const education = profile.education || [];
+  const stats = profile.stats || [];
+
+  const filters = [
+    "All",
+    ...new Set(projects.map((project) => project.type).filter(Boolean)),
   ];
 
+  const visibleProjects =
+    activeFilter === "All"
+      ? projects
+      : projects.filter((project) => project.type === activeFilter);
+
+  function closeMenu() {
+    setMenuOpen(false);
+  }
+
+function sectionTitle(key, fallback) {
+  const section = sections[key];
+
+  if (typeof section === "string") return section;
+
+  // Your JSON labels look like "03 / EXPERIENCE".
+  if (section?.label) {
+    return section.label.split("/").slice(1).join("/").trim();
+  }
+
+  return fallback;
+}
+
   return (
-    <div className={darkMode ? "site-shell dark-theme" : "site-shell"}>
+    <div className={`site-shell${lightTheme ? " light-theme" : ""}`}>
       <div
         className="scroll-progress"
-        style={{ transform: `scaleX(${scrollProgress})` }}
+        style={{ transform: `scaleX(${scrollProgress / 100})` }}
+        aria-hidden="true"
       />
 
       <header className="site-header">
-        <a className="brand" href="#home">
-          <span className="brand-mark">SJ</span>
-          <span>
-            {profile.name}
-            <small>DATA · AI · AUTOMATION</small>
+        <a className="brand" href="#home" onClick={closeMenu}>
+          <span className="brand-mark">{branding.monogram || "SJ"}</span>
+          <span className="brand-copy">
+            <strong>{profile.name}</strong>
+            <small>{branding.subtitle || "DATA · AI · AUTOMATION"}</small>
           </span>
         </a>
 
         <button
           className="menu-toggle"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle navigation"
+          type="button"
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
         >
-          {menuOpen ? "Close" : "Menu"}
+          <span />
+          <span />
         </button>
 
-        <nav className={menuOpen ? "navigation navigation-open" : "navigation"}>
-          {navItems.map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              onClick={() => setMenuOpen(false)}
-            >
-              {item}
+        <nav className={`site-nav${menuOpen ? " is-open" : ""}`}>
+          {navigation.map((item) => (
+            <a key={item.id} href={`#${item.id}`} onClick={closeMenu}>
+              {item.label}
             </a>
           ))}
-          <a
-            className="nav-contact"
-            href="#contact"
-            onClick={() => setMenuOpen(false)}
-          >
-            Contact ↗
-          </a>
-        </nav>
 
-        <button
-          className="theme-toggle"
-          onClick={() => setDarkMode(!darkMode)}
-          aria-label={`Switch to ${darkMode ? "light" : "dark"} theme`}
-        >
-          {darkMode ? "☀" : "☾"}
-        </button>
+          <a className="nav-contact" href="#contact" onClick={closeMenu}>
+            {ui.navigationContact || "Contact"} <span aria-hidden="true">↗</span>
+          </a>
+
+          <button
+            className="theme-toggle"
+            type="button"
+            onClick={() => setLightTheme((current) => !current)}
+            aria-label={lightTheme ? "Switch to dark theme" : "Switch to light theme"}
+          >
+            {lightTheme ? "☾" : "☼"}
+          </button>
+        </nav>
       </header>
 
       <main>
-        <section className="hero" id="home">
-          <div className="hero-copy animate-in">
-            <p className="eyebrow">{profile.role} · LUDHIANA, INDIA</p>
+        <section className="hero-section" id="home">
+          <div className="hero-copy">
+            <p className="eyebrow">
+              {profile.role}
+              {profile.location ? ` · ${profile.location}` : ""}
+            </p>
+
             <h1>
-              Hi, I’m
-              <br />
-              <em>{profile.name.split(" ")[0]}.</em>
+              {ui.hero?.greeting || "Hi, I’m"}
+              <span>{profile.name?.split(" ")[0] || profile.name}.</span>
             </h1>
+
             <p className="hero-description">{profile.about}</p>
 
             <div className="hero-actions">
               <a className="button button-primary" href="#projects">
-                Explore my work ↓
+                {ui.hero?.primaryButton || "Explore my work"} <span>↓</span>
               </a>
-              <a
-                className="button button-secondary"
-                href="https://drive.google.com/drive/u/0/folders/17ThnbVthhsvUSbwZK4zU5PRvqfSZk90W"
-                target="_blank"
-                rel="noreferrer"
-              >
-                View résumé ↗
-              </a>
+
+              {links.resume && (
+                <a
+                  className="button button-secondary"
+                  href={links.resume}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {ui.hero?.resumeButton || "View résumé"} <span>↗</span>
+                </a>
+              )}
             </div>
+
+            {stats.length > 0 && (
+              <div className="hero-stats">
+                {stats.map((stat, index) => (
+                  <div className="stat-item" key={`${stat.value}-${index}`}>
+                    <strong>{stat.value}</strong>
+                    <span>{stat.label}</span>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
-          <div
-            className="hero-art animate-in"
-            aria-label="Srishti Jaitly initials illustration"
-          >
-            <div className="art-ring art-ring-one" />
-            <div className="art-ring art-ring-two" />
+          <div className="hero-art" aria-hidden="true">
+            <div className="art-orbit art-orbit-one" />
+            <div className="art-orbit art-orbit-two" />
+            <div className="art-glow" />
             <div className="art-monogram">
-              SJ<span>✳</span>
+              <span>{branding.monogram || "SJ"}</span>
             </div>
-            <p>
-              CURIOUS BY NATURE
-              <br />
-              ANALYTICAL BY CHOICE
-            </p>
-          </div>
-
-          <div className="hero-stats animate-in">
-            <div>
-              <strong>30%</strong>
-              <span>faster data processing</span>
-            </div>
-            <div>
-              <strong>60%</strong>
-              <span>less manual effort</span>
-            </div>
-            <div>
-              <strong>1st</strong>
-              <span>AI festival winner</span>
-            </div>
+            <span className="art-star">✳</span>
+            <span className="art-caption">
+              {branding.homeLabel || "DATA · AI · AUTOMATION"}
+            </span>
           </div>
         </section>
 
         <section className="content-section about-section" id="about">
-          <p className="section-label">01 / ABOUT</p>
-          <div className="about-grid animate-in">
-            <h2>
-              Curious by nature.
-              <br />
-              <em>Analytical by choice.</em>
-            </h2>
+          <SectionHeading
+            number="01"
+            label={sectionTitle("about", "About")}
+            title="Curious about data. Focused on useful outcomes."
+          />
+          <div className="about-content reveal">
             <p>{profile.about}</p>
+            <div className="about-links">
+              {links.github && (
+                <a href={links.github} target="_blank" rel="noreferrer">
+                  GitHub <span>↗</span>
+                </a>
+              )}
+              {links.linkedin && (
+                <a href={links.linkedin} target="_blank" rel="noreferrer">
+                  LinkedIn <span>↗</span>
+                </a>
+              )}
+              {links.email && (
+                <a href={links.email}>
+                  Email <span>↗</span>
+                </a>
+              )}
+            </div>
           </div>
         </section>
 
         <section className="content-section projects-section" id="projects">
-          <p className="section-label">02 / SELECTED WORK</p>
-          <div className="section-heading animate-in">
-            <h2>
-              Projects with
-              <br />
-              <em>a purpose.</em>
-            </h2>
-            <p>A few ways I’ve used data and AI to solve practical problems.</p>
-          </div>
+          <SectionHeading
+            number="02"
+            label={sectionTitle("projects", "Projects")}
+            title="Selected work"
+          />
 
-          <div className="project-filters">
-            {["All", "AI", "Automation"].map((item) => (
+          <div className="project-filters" aria-label="Filter projects">
+            {filters.map((filter) => (
               <button
-                key={item}
-                className={filter === item ? "filter-active" : ""}
-                onClick={() => setFilter(item)}
+                className={activeFilter === filter ? "active" : ""}
+                key={filter}
+                type="button"
+                onClick={() => setActiveFilter(filter)}
               >
-                {item}
+                {filter}
               </button>
             ))}
           </div>
 
-          <div className="project-grid">
+          <div className="projects-grid">
             {visibleProjects.map((project, index) => (
               <article
-                className="project-card animate-in"
-                key={project.title}
+                className="project-card reveal"
+                key={`${project.title}-${index}`}
+                style={{ "--reveal-delay": `${index * 90}ms` }}
               >
-                <div className={`project-art project-art-${index + 1}`}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <strong>{project.type === "AI" ? "✳" : "↗"}</strong>
+                <div className="project-card-top">
+                  <span className="project-type">{project.type}</span>
+                  <span className="project-number">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                 </div>
 
-                <div className="project-info">
-                  <p className="project-type">{project.type} PROJECT</p>
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                  <p className="project-result">{project.result}</p>
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
 
+                {project.result && (
+                  <p className="project-result">{project.result}</p>
+                )}
+
+                {project.tools?.length > 0 && (
                   <div className="tag-list">
-                    {(project.tools || []).map((tool) => (
-                      <span key={tool}>{tool}</span>
+                    {project.tools.map((tool) => (
+                      <span className="tag" key={tool}>
+                        {tool}
+                      </span>
                     ))}
                   </div>
+                )}
 
+                {project.url && (
                   <a
-                    href="https://github.com/SrishtiJaitly"
+                    className="project-link"
+                    href={project.url}
                     target="_blank"
                     rel="noreferrer"
+                    aria-label={`View ${project.title}`}
                   >
-                    Find it on GitHub ↗
+                    View project <span>↗</span>
                   </a>
-                </div>
+                )}
               </article>
             ))}
           </div>
         </section>
 
         <section className="content-section experience-section" id="experience">
-          <p className="section-label">03 / EXPERIENCE</p>
-          <div className="section-heading animate-in">
-            <h2>
-              Where I’ve
-              <br />
-              <em>made a difference.</em>
-            </h2>
-          </div>
+          <SectionHeading
+            number="03"
+            label={sectionTitle("experience", "Experience")}
+            title="Where I’ve made a difference."
+          />
 
-          <div className="timeline">
-            {(profile.experience || []).map((job) => (
-              <article className="job animate-in" key={job.company}>
-                <p className="job-dates">{job.dates}</p>
-                <div>
-                  <p className="job-company">{job.company}</p>
+          <div className="experience-list">
+            {experience.map((job, index) => (
+              <article
+                className="experience-card reveal"
+                key={`${job.company}-${index}`}
+                style={{ "--reveal-delay": `${index * 100}ms` }}
+              >
+                <div className="experience-date">{job.dates}</div>
+                <div className="experience-details">
+                  <p className="experience-company">{job.company}</p>
                   <h3>{job.role}</h3>
                   <ul>
-                    {job.points.map((point) => (
-                      <li key={point}>{point}</li>
+                    {(job.points || []).map((point, pointIndex) => (
+                      <li key={`${point}-${pointIndex}`}>{point}</li>
                     ))}
                   </ul>
                 </div>
@@ -313,34 +399,48 @@ function App() {
           </div>
         </section>
 
-        <section className="achievement-section" id="achievement">
-          <p className="section-label">04 / ACHIEVEMENT</p>
-          <p className="award-badge animate-in">
-            {profile.achievement.award}
-          </p>
-          <h2 className="animate-in">{profile.achievement.title}</h2>
-          <p className="animate-in">
-            Winning project: “{profile.achievement.project}”
-          </p>
-        </section>
+        {profile.achievement && (
+          <section className="content-section achievement-section" id="achievement">
+            <SectionHeading
+              number="04"
+              label={sectionTitle("achievement", "Achievement")}
+              title="A moment worth celebrating."
+            />
+
+            <article className="achievement-card reveal">
+              <span className="achievement-badge">✦ Recognition</span>
+              <p className="achievement-award">{profile.achievement.award}</p>
+              <h3>{profile.achievement.title}</h3>
+              {profile.achievement.project && (
+                <p>{profile.achievement.project}</p>
+              )}
+              {profile.achievement.description && (
+                <p>{profile.achievement.description}</p>
+              )}
+            </article>
+          </section>
+        )}
 
         <section className="content-section skills-section" id="skills">
-          <p className="section-label">05 / TOOLKIT</p>
-          <div className="section-heading animate-in">
-            <h2>
-              Tools I use
-              <br />
-              <em>to make things.</em>
-            </h2>
-          </div>
+          <SectionHeading
+            number="05"
+            label={sectionTitle("skills", "Skills")}
+            title="Tools I work with"
+          />
 
           <div className="skills-grid">
-            {(profile.skills || []).map((group) => (
-              <article className="skill-card animate-in" key={group.title}>
+            {skills.map((group, index) => (
+              <article
+                className="skill-card reveal"
+                key={`${group.title}-${index}`}
+                style={{ "--reveal-delay": `${index * 80}ms` }}
+              >
                 <h3>{group.title}</h3>
                 <div className="tag-list">
-                  {group.skills.map((skill) => (
-                    <span key={skill}>{skill}</span>
+                  {(group.skills || []).map((skill) => (
+                    <span className="tag" key={skill}>
+                      {skill}
+                    </span>
                   ))}
                 </div>
               </article>
@@ -349,77 +449,118 @@ function App() {
         </section>
 
         <section className="content-section education-section" id="education">
-          <p className="section-label">06 / EDUCATION</p>
+          <SectionHeading
+            number="06"
+            label={sectionTitle("education", "Education")}
+            title="Learning that shaped my work"
+          />
 
-          {(profile.education || []).map((item) => (
-            <article className="education-item animate-in" key={item.school}>
-              <div>
-                <h3>{item.degree}</h3>
-                <p>
-                  {item.school} · {item.place}
-                </p>
-              </div>
-              <span>{item.dates}</span>
-            </article>
-          ))}
+          <div className="education-list">
+            {education.map((item, index) => (
+              <article
+                className="education-card reveal"
+                key={`${item.school}-${index}`}
+                style={{ "--reveal-delay": `${index * 80}ms` }}
+              >
+                <div>
+                  <h3>{item.degree}</h3>
+                  <p>{item.school}</p>
+                </div>
+                <div className="education-meta">
+                  <span>{item.place}</span>
+                  <span>{item.dates}</span>
+                </div>
+              </article>
+            ))}
+          </div>
         </section>
 
         <section className="contact-section" id="contact">
-          <p className="section-label">07 / LET’S CONNECT</p>
-          <h2 className="animate-in">
-            Let’s make
-            <br />
-            <em>something useful.</em>
-          </h2>
+  <div className="contact-card reveal">
+    <span className="contact-orb" aria-hidden="true" />
 
+    <p className="eyebrow">
+      {ui.contact?.intro || "HAVE A QUESTION OR AN INTERESTING DATA CHALLENGE?"}
+    </p>
+
+    <h2>
+      {ui.contact?.titleLineOne || "Let’s make"}
+      <span>{ui.contact?.titleLineTwo || "something useful."}</span>
+    </h2>
+
+    <p className="contact-description">
+      {ui.contact?.description ||
+        "I’m open to conversations about data, AI, and interesting opportunities."}
+    </p>
+
+    {links.email && (
+      <a className="button button-primary contact-email" href={`mailto:${links.email.replace(/^mailto:/, "")}`}>
+        {ui.contact?.emailButton || "Email me"} <span>↗</span>
+      </a>
+    )}
+
+    <div className="contact-socials">
+      {(ui.contact?.socialLinks || [
+        { key: "email", label: "Email" },
+        { key: "linkedin", label: "LinkedIn" },
+        { key: "github", label: "GitHub" },
+      ]).map((item) => {
+        const href =
+          item.key === "email"
+            ? links.email
+              ? `mailto:${links.email.replace(/^mailto:/, "")}`
+              : ""
+            : links[item.key];
+
+        return href ? (
           <a
-            className="button button-light"
-            href="mailto:srishtijaitly2002@gmail.com"
+            className="contact-social-link"
+            href={href}
+            key={item.key}
+            target={item.key === "email" ? undefined : "_blank"}
+            rel={item.key === "email" ? undefined : "noreferrer"}
           >
-            Email me ↗
+            {item.label} <span aria-hidden="true">↗</span>
           </a>
-
-          <div className="social-links">
-            <a href="mailto:srishtijaitly2002@gmail.com">Email</a>
-            <a
-              href="https://www.linkedin.com/in/Srishti-Jaitly/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              LinkedIn ↗
-            </a>
-            <a
-              href="https://github.com/SrishtiJaitly"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub ↗
-            </a>
-          </div>
-        </section>
+        ) : null;
+      })}
+    </div>
+  </div>
+</section>
       </main>
 
       <footer className="site-footer">
-        <a className="brand" href="#home">
-          <span className="brand-mark">SJ</span>
-          <span>
-            {profile.name}
-            <small>DATA · AI · AUTOMATION</small>
-          </span>
-        </a>
-        <p>Designed with curiosity · © {new Date().getFullYear()}</p>
-        <a href="#home">Back to top ↑</a>
+        <span>© {new Date().getFullYear()} {profile.name}</span>
+        <span>{branding.subtitle || "DATA · AI · AUTOMATION"}</span>
+        {links.github && (
+          <a href={links.github} target="_blank" rel="noreferrer">
+            GitHub ↗
+          </a>
+        )}
       </footer>
 
-      {showTop && (
+      {showTopButton && (
         <button
           className="back-to-top"
+          type="button"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           aria-label="Back to top"
         >
           ↑
         </button>
       )}
+    </div>
+  );
+}
+
+function SectionHeading({ number, label, title }) {
+  return (
+    <div className="section-heading reveal">
+      <div className="section-kicker">
+        <span>{number} / {label}</span>
+        <i />
+      </div>
+      <h2>{title}</h2>
     </div>
   );
 }
