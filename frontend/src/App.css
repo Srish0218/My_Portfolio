@@ -1528,3 +1528,453 @@ button {
     width: 100%;
   }
 }
+
+/* Data-science focus cards */
+.focus-section {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 0 0 100px;
+}
+
+.focus-label {
+  margin: 0 0 18px;
+  color: var(--accent, #8ff5d5);
+  font: 500 0.75rem/1.4 "DM Mono", monospace;
+  letter-spacing: 0.16em;
+}
+
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.focus-card {
+  position: relative;
+  min-height: 150px;
+  padding: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(190, 205, 235, 0.14);
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(30, 42, 68, 0.74),
+    rgba(14, 21, 38, 0.82)
+  );
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.focus-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(143, 245, 213, 0.45);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+.focus-number {
+  color: var(--accent, #8ff5d5);
+  font: 500 0.72rem/1 "DM Mono", monospace;
+}
+
+.focus-card h2 {
+  margin: 24px 0 8px;
+  font-size: 1.15rem;
+}
+
+.focus-card p {
+  margin: 0;
+  color: var(--muted, #a9b3ca);
+  line-height: 1.6;
+}
+
+.site-nav a.active {
+  color: var(--accent, #8ff5d5);
+}
+
+.project-featured {
+  margin-left: auto;
+  padding: 5px 9px;
+  border: 1px solid rgba(143, 245, 213, 0.32);
+  border-radius: 999px;
+  color: var(--accent, #8ff5d5);
+  font: 500 0.68rem/1 "DM Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.project-number {
+  margin-left: 10px;
+}
+
+@media (max-width: 720px) {
+  .focus-section {
+    width: min(100% - 36px, 560px);
+    padding-bottom: 72px;
+  }
+
+  .focus-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .focus-card {
+    min-height: 120px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .focus-card {
+    transition: none;
+  }
+}
+
+/* Professional contact section */
+.contact-card-pro {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(32px, 6vw, 76px);
+}
+
+.contact-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.8fr);
+  align-items: center;
+  gap: clamp(40px, 8vw, 120px);
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.contact-copy h2 {
+  max-width: 760px;
+  margin: 22px 0;
+  font-size: clamp(2.8rem, 7vw, 6.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+}
+
+.contact-copy h2 span {
+  display: block;
+  color: #aab5ce;
+}
+
+.contact-copy .contact-description {
+  max-width: 560px;
+  margin-bottom: 28px;
+  color: #b4bfd4;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.contact-location {
+  margin: 22px 0 0;
+  color: #aab5ce;
+  font: 500 0.78rem/1.5 "DM Mono", monospace;
+  letter-spacing: 0.04em;
+}
+
+.contact-location span {
+  color: #8ff5d5;
+}
+
+.contact-links-panel {
+  padding: 24px;
+  border: 1px solid rgba(190, 205, 235, 0.16);
+  border-radius: 20px;
+  background: rgba(18, 27, 47, 0.78);
+  backdrop-filter: blur(14px);
+}
+
+.contact-panel-label {
+  margin: 0 0 16px;
+  color: #8ff5d5;
+  font: 500 0.72rem/1.4 "DM Mono", monospace;
+  letter-spacing: 0.14em;
+}
+
+.contact-profile-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 4px;
+  color: #eef2ff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(190, 205, 235, 0.12);
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.contact-profile-link:last-child {
+  border-bottom: 0;
+}
+
+.contact-profile-link:hover {
+  color: #8ff5d5;
+  transform: translateX(4px);
+}
+
+.contact-profile-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  place-items: center;
+  border: 1px solid rgba(143, 245, 213, 0.28);
+  border-radius: 13px;
+  color: #8ff5d5;
+  font-weight: 700;
+}
+
+.contact-profile-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.contact-profile-copy strong {
+  font-size: 0.98rem;
+}
+
+.contact-profile-copy small {
+  color: #aab5ce;
+  font-size: 0.78rem;
+}
+
+.contact-profile-arrow {
+  margin-left: auto;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 760px) {
+  .contact-card-pro {
+    padding: 32px 22px;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .contact-copy h2 {
+    font-size: clamp(2.7rem, 13vw, 4.5rem);
+  }
+
+  .contact-links-panel {
+    padding: 18px;
+  }
+}
+
+/* Contact layout corrections */
+.contact-section {
+  padding-inline: clamp(20px, 5vw, 80px);
+}
+
+.contact-card-pro {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+}
+
+.contact-card-pro .contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  align-items: center;
+  gap: clamp(40px, 7vw, 100px);
+  width: min(1200px, 100%);
+  margin: 0 auto;
+}
+
+.contact-copy {
+  min-width: 0;
+}
+
+.contact-copy h2 {
+  width: 100%;
+  max-width: 850px;
+  font-size: clamp(3rem, 5.5vw, 5.8rem);
+  line-height: 1;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.contact-copy h2 span {
+  display: block;
+}
+
+.contact-links-panel {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Override the older generic contact-link pill rules for these panel rows. */
+.contact-section .contact-links-panel .contact-profile-link {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 16px 4px;
+  border: 0;
+  border-bottom: 1px solid rgba(190, 205, 235, 0.12);
+  border-radius: 0;
+  color: #eef2ff;
+  background: transparent;
+  font-size: inherit;
+}
+
+.contact-section .contact-links-panel .contact-profile-link:last-child {
+  border-bottom: 0;
+}
+
+.contact-section .contact-links-panel .contact-profile-link:hover {
+  color: #8ff5d5;
+  background: transparent;
+}
+
+.contact-profile-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 760px) {
+  .contact-card-pro {
+    padding: 32px 22px;
+  }
+
+  .contact-card-pro .contact-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .contact-copy h2 {
+    font-size: clamp(2.8rem, 11vw, 4.5rem);
+  }
+}
+
+/* Résumé preview and download */
+.resume-modal-backdrop {
+  position: fixed;
+  z-index: 1100;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgb(4 8 18 / 82%);
+  backdrop-filter: blur(12px);
+  animation: resume-fade-in 180ms ease-out;
+}
+
+.resume-modal {
+  width: min(1000px, 100%);
+  height: min(90vh, 900px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 16%);
+  border-radius: 18px;
+  background: #10182a;
+  box-shadow: 0 30px 100px rgb(0 0 0 / 50%);
+  animation: resume-rise-in 220ms ease-out;
+}
+
+.resume-modal-header {
+  min-height: 78px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid rgb(255 255 255 / 12%);
+}
+
+.resume-modal-kicker {
+  margin: 0 0 4px;
+  color: var(--lime);
+  font: 10px var(--mono);
+  letter-spacing: 0.12em;
+}
+
+.resume-modal-header h2 {
+  margin: 0;
+  font: 700 19px var(--display);
+}
+
+.resume-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.resume-download {
+  white-space: nowrap;
+}
+
+.resume-modal-close {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgb(255 255 255 / 18%);
+  border-radius: 50%;
+  color: var(--ink);
+  background: var(--card);
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.resume-preview-frame {
+  width: 100%;
+  flex: 1;
+  border: 0;
+  background: #e9edf5;
+}
+
+@keyframes resume-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes resume-rise-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 560px) {
+  .resume-modal-backdrop {
+    padding: 8px;
+  }
+
+  .resume-modal {
+    width: 100%;
+    height: 94vh;
+    border-radius: 14px;
+  }
+
+  .resume-modal-header {
+    padding: 12px;
+  }
+
+  .resume-modal-header h2 {
+    font-size: 15px;
+  }
+
+  .resume-modal-actions {
+    gap: 7px;
+  }
+
+  .resume-download {
+    min-height: 40px;
+    padding-inline: 12px;
+    gap: 6px;
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resume-modal-backdrop,
+  .resume-modal {
+    animation: none;
+  }
+}

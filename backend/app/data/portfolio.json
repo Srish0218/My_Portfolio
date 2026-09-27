@@ -9,9 +9,9 @@
     "homeLabel": "Srishti Jaitly home"
   },
   "links": {
-    "github": "https://github.com/SrishtiJaitly",
-    "linkedin": "https://www.linkedin.com/in/Srishti-Jaitly/",
-    "resume": "https://drive.google.com/drive/u/0/folders/17ThnbVthhsvUSbwZK4zU5PRvqfSZk90W",
+    "github": "https://github.com/Srish0218",
+    "linkedin": "https://www.linkedin.com/in/srishti-jaitly-6852b822b/",
+    "resume": "SRISHTI_JAITLY__Resume.pdf",
     "email": "srishtijaitly2002@gmail.com"
   },
   "stats": [
@@ -191,10 +191,10 @@
       "dates": "April 2025 — Present",
       "points": [
         "Working on Data360 Analyze, focusing on data integration, transformation, and automation across enterprise workflows. ",
-"Collaborate with cross-functional teams to build and optimize data pipelines ensuring high data quality and reliability.",
+        "Collaborate with cross-functional teams to build and optimize data pipelines ensuring high data quality and reliability.",
         "Conduct in-depth data analysis and visualization to support business intelligence and decision-making. ",
-"Trained in Python for data analytics, Snowflake Data Warehouse, and SQL optimization, enabling efficient large-scale data handling. ",
-"Enhancing automation scripts and data orchestration processes to improve reporting efficiency and reduce manual intervention."
+        "Trained in Python for data analytics, Snowflake Data Warehouse, and SQL optimization, enabling efficient large-scale data handling. ",
+        "Enhancing automation scripts and data orchestration processes to improve reporting efficiency and reduce manual intervention."
       ]
     },
     {
@@ -203,22 +203,22 @@
       "dates": "May 2024 — April 2025",
       "points": [
         "Independently managed a client project, automating workflows for 3 websites and delivering solutions ahead of deadlines. ",
- "Automated 2 additional websites for internal organizational workflows, streamlining operations and improving efficiency. ",
- "Created Python scripts using requests and pandas libraries to download and organize audio files, enhancing data accessibilityand usability.",
-  "Developed machine learning models and NLP techniques, enhancing customer transcript evaluations and improving audit accuracy by 40%.",
- "Engineered prompt-based solutions using ChatGPT, Gemini, and Mistral models, reducing communication-related complaints by 25%.",
- "Automated workflows for 2 clients using Selenium, including OTP-based login, field interactions (placeholders, date pickers, dropdowns), and report generation, streamlining processes and saving time by 50%.",
- "Integrated Vennify LLM for grammar correction, boosting error detection and correction efficiency by 30%.",
- "Implemented fuzzy matching algorithms with FuzzyWuzzy, increasing data accuracy and reducing errors by 20%."
+        "Automated 2 additional websites for internal organizational workflows, streamlining operations and improving efficiency. ",
+        "Created Python scripts using requests and pandas libraries to download and organize audio files, enhancing data accessibilityand usability.",
+        "Developed machine learning models and NLP techniques, enhancing customer transcript evaluations and improving audit accuracy by 40%.",
+        "Engineered prompt-based solutions using ChatGPT, Gemini, and Mistral models, reducing communication-related complaints by 25%.",
+        "Automated workflows for 2 clients using Selenium, including OTP-based login, field interactions (placeholders, date pickers, dropdowns), and report generation, streamlining processes and saving time by 50%.",
+        "Integrated Vennify LLM for grammar correction, boosting error detection and correction efficiency by 30%.",
+        "Implemented fuzzy matching algorithms with FuzzyWuzzy, increasing data accuracy and reducing errors by 20%."
       ]
     }
   ],
   "achievement": {
-  "title": "SuryoJasvi AI Festival 2025",
-  "award": "First Place · ₹50,000",
-  "project": "Automated Insight with Assured Brand Integrity",
-  "description": "Our team won First Place 🥇 at the SuryoJasvi AI Festival 2025 and received a ₹50,000 prize for our project, “Automated Insight with Assured Brand Integrity.”\n\nWe built an AI-driven automation API to process and evaluate business data using:\n• LangChain and Gemini for contextual analysis\n• Hugging Face NLP models for classification and insights\n• Python rules tailored to business requirements\n• Pandas for data processing\n• FastAPI for the API service\n• MS SQL for input and output data\n• n8n for continuous workflow automation\n\nThe API evaluates database records using AI and rule-based checks, then stores the results. It can run on demand or continuously. The project strengthened our technical and teamwork skills and showed how LLMs, automation, and business logic can work together."
-},
+    "title": "SuryoJasvi AI Festival 2025",
+    "award": "First Place · ₹50,000",
+    "project": "Automated Insight with Assured Brand Integrity",
+    "description": "Our team won First Place 🥇 at the SuryoJasvi AI Festival 2025 and received a ₹50,000 prize for our project, “Automated Insight with Assured Brand Integrity.”\n\nWe built an AI-driven automation API to process and evaluate business data using:\n• LangChain and Gemini for contextual analysis\n• Hugging Face NLP models for classification and insights\n• Python rules tailored to business requirements\n• Pandas for data processing\n• FastAPI for the API service\n• MS SQL for input and output data\n• n8n for continuous workflow automation\n\nThe API evaluates database records using AI and rule-based checks, then stores the results. It can run on demand or continuously. The project strengthened our technical and teamwork skills and showed how LLMs, automation, and business logic can work together."
+  },
   "skills": [
     {
       "title": "Code & data",

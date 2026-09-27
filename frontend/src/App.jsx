@@ -9,17 +9,17 @@ function App() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [projectSearch, setProjectSearch] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showTopButton, setShowTopButton] = useState(false);
+  const [resumeOpen, setResumeOpen] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
 
     fetch(DATA_URL)
       .then((response) => {
-        if (!response.ok) {
-          throw new Error("Could not load portfolio.json");
-        }
+        if (!response.ok) throw new Error("Could not load portfolio.json");
         return response.json();
       })
       .then((data) => {
@@ -81,6 +81,46 @@ function App() {
   }, [profile, activeFilter, projectSearch]);
 
   useEffect(() => {
+    const sectionIds = [
+      "home",
+      "about",
+      "projects",
+      "experience",
+      "achievement",
+      "skills",
+      "education",
+      "contact",
+    ];
+
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    if (!("IntersectionObserver" in window)) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntry = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (first, second) =>
+              second.intersectionRatio - first.intersectionRatio,
+          )[0];
+
+        if (visibleEntry) setActiveSection(visibleEntry.target.id);
+      },
+      {
+        rootMargin: "-20% 0px -65% 0px",
+        threshold: [0, 0.2, 0.5, 1],
+      },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, [profile]);
+
+  useEffect(() => {
     function showClickRipple(event) {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         return;
@@ -102,13 +142,27 @@ function App() {
   }, []);
 
   useEffect(() => {
-    function closeMenuOnEscape(event) {
-      if (event.key === "Escape") setMenuOpen(false);
+    function handleEscape(event) {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        setResumeOpen(false);
+      }
     }
 
-    document.addEventListener("keydown", closeMenuOnEscape);
-    return () => document.removeEventListener("keydown", closeMenuOnEscape);
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
   }, []);
+
+  useEffect(() => {
+    if (!resumeOpen) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [resumeOpen]);
 
   if (loadError) {
     return (
@@ -163,6 +217,24 @@ function App() {
     return matchesFilter && searchableText.includes(searchTerm);
   });
 
+  const focusGroups = [
+    {
+      title: "Customer Experience Analytics",
+      description:
+        "Turning conversation data into insights that improve customer interactions.",
+    },
+    {
+      title: "AI Product Development",
+      description:
+        "Creating practical tools such as AI career assistants and physics learning apps.",
+    },
+    {
+      title: "Data Quality & Reporting",
+      description:
+        "Improving accuracy and making business data easier to evaluate and use.",
+    },
+  ];
+
   function closeMenu() {
     setMenuOpen(false);
   }
@@ -171,7 +243,6 @@ function App() {
     const section = sections[key];
 
     if (typeof section === "string") return section;
-
     if (section?.label) {
       return section.label.split("/").slice(1).join("/").trim();
     }
@@ -185,12 +256,11 @@ function App() {
   }
 
   const contactLinks = (
-  ui.contact?.socialLinks || [
-    { key: "email", label: "Email" },
-    { key: "linkedin", label: "LinkedIn" },
-    { key: "github", label: "GitHub" },
-  ]
-).filter((item) => item.key !== "email");
+    ui.contact?.socialLinks || [
+      { key: "linkedin", label: "LinkedIn" },
+      { key: "github", label: "GitHub" },
+    ]
+  ).filter((item) => item.key !== "email");
 
   return (
     <div className="site-shell">
@@ -222,7 +292,13 @@ function App() {
 
         <nav className={`site-nav${menuOpen ? " is-open" : ""}`}>
           {navigation.map((item) => (
-            <a key={item.id} href={`#${item.id}`} onClick={closeMenu}>
+            <a
+              className={activeSection === item.id ? "active" : ""}
+              key={item.id}
+              href={`#${item.id}`}
+              aria-current={activeSection === item.id ? "location" : undefined}
+              onClick={closeMenu}
+            >
               {item.label}
             </a>
           ))}
@@ -254,27 +330,15 @@ function App() {
               </a>
 
               {links.resume && (
-                <a
+                <button
                   className="button button-secondary"
-                  href={links.resume}
-                  target="_blank"
-                  rel="noreferrer"
+                  type="button"
+                  onClick={() => setResumeOpen(true)}
                 >
-                  {ui.hero?.resumeButton || "View Resume"}
-                </a>
+                  {ui.hero?.resumeButton || "View résumé"}
+                </button>
               )}
             </div>
-
-            {stats.length > 0 && (
-              <div className="hero-stats">
-                {stats.map((stat, index) => (
-                  <div className="stat-item" key={`${stat.value}-${index}`}>
-                    <strong>{stat.value}</strong>
-                    <span>{stat.label}</span>
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
 
           <div className="hero-art" aria-hidden="true">
@@ -290,6 +354,26 @@ function App() {
             </span>
           </div>
         </section>
+
+        {focusGroups.length > 0 && (
+          <section className="focus-section" aria-label="Areas of focus">
+            <p className="focus-label">AREAS OF FOCUS</p>
+            <div className="focus-grid">
+              {focusGroups.map((group, index) => (
+                <article
+                  className="focus-card"
+                  key={`${group.title}-${index}`}
+                >
+                  <span className="focus-number">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h2>{group.title}</h2>
+                  <p>{group.description}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="content-section about-section" id="about">
           <SectionHeading
@@ -343,7 +427,7 @@ function App() {
               )}
             </label>
 
-            <span className="project-count">
+            <span className="project-count" aria-live="polite">
               {visibleProjects.length} of {projects.length} projects
             </span>
           </div>
@@ -354,6 +438,7 @@ function App() {
                 className={activeFilter === filter ? "active" : ""}
                 key={filter}
                 type="button"
+                aria-pressed={activeFilter === filter}
                 onClick={() => setActiveFilter(filter)}
               >
                 {filter}
@@ -370,6 +455,9 @@ function App() {
               >
                 <div className="project-card-top">
                   <span className="project-type">{project.type}</span>
+                  {project.featured && (
+                    <span className="project-featured">Featured</span>
+                  )}
                   <span className="project-number">
                     {String(index + 1).padStart(2, "0")}
                   </span>
@@ -408,7 +496,8 @@ function App() {
 
             {visibleProjects.length === 0 && (
               <p className="empty-projects">
-                No projects match “{projectSearch}”. Try another search.
+                No projects match “{projectSearch}”. Try another search or
+                category.
               </p>
             )}
           </div>
@@ -464,8 +553,34 @@ function App() {
               )}
 
               {profile.achievement.description && (
-                <p>{profile.achievement.description}</p>
-              )}
+  <div className="achievement-description">
+    {profile.achievement.description
+      .split(/\n\s*\n/)
+      .filter(Boolean)
+      .map((block, index) => {
+        const lines = block.split("\n").filter(Boolean);
+        const bullets = lines
+          .filter((line) => line.trim().startsWith("•"))
+          .map((line) => line.trim().replace(/^•\s*/, ""));
+        const text = lines
+          .filter((line) => !line.trim().startsWith("•"))
+          .join(" ");
+
+        return (
+          <div key={index}>
+            {text && <p>{text}</p>}
+            {bullets.length > 0 && (
+              <ul>
+                {bullets.map((bullet, bulletIndex) => (
+                  <li key={bulletIndex}>{bullet}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        );
+      })}
+  </div>
+)}
             </article>
           </section>
         )}
@@ -525,58 +640,130 @@ function App() {
         </section>
 
         <section className="contact-section" id="contact">
-          <div className="contact-card reveal">
-            <span className="contact-orb" aria-hidden="true" />
+  <div className="contact-card contact-card-pro reveal">
+    <span className="contact-orb" aria-hidden="true" />
 
-            <p className="eyebrow">
-              {ui.contact?.intro ||
-                "HAVE A QUESTION OR AN INTERESTING DATA CHALLENGE?"}
-            </p>
+    <div className="contact-layout">
+      <div className="contact-copy">
+        <p className="eyebrow">
+          {ui.contact?.intro ||
+            "HAVE A QUESTION OR AN INTERESTING DATA CHALLENGE?"}
+        </p>
 
-            <h2>
-              {ui.contact?.titleLineOne || "Let’s make"}
-              <span>{ui.contact?.titleLineTwo || "something useful."}</span>
-            </h2>
+        <h2>
+          Let’s talk about
+          <span> data, AI & meaningful work.</span>
+        </h2>
 
-            <p className="contact-description">
-              {ui.contact?.description ||
-                "I’m open to conversations about data, AI, and interesting opportunities."}
-            </p>
+        <p className="contact-description">
+          {ui.contact?.description ||
+            "I’m open to conversations about data, AI, and interesting opportunities."}
+        </p>
 
-            {links.email && (
-              <a
-                className="button button-primary contact-email"
-                href={getEmailUrl(links.email)}
-              >
-                {ui.contact?.emailButton || "Email me"} <span>↗</span>
-              </a>
-            )}
+        {links.email && (
+          <a
+            className="button button-primary contact-email"
+            href={getEmailUrl(links.email)}
+          >
+            {ui.contact?.emailButton || "Email me"} <span>↗</span>
+          </a>
+        )}
 
-            <div className="contact-socials">
-              {contactLinks.map((item) => {
-                const href =
-                  item.key === "email"
-                    ? getEmailUrl(links.email)
-                    : links[item.key];
+        {profile.location && (
+          <p className="contact-location">
+            <span aria-hidden="true">⌖</span> {profile.location}
+          </p>
+        )}
+      </div>
 
-                if (!href) return null;
+      <div className="contact-links-panel">
+        <p className="contact-panel-label">CONNECT WITH ME</p>
 
-                return (
-                  <a
-                    className="contact-social-link"
-                    href={href}
-                    key={item.key}
-                    target={item.key === "email" ? undefined : "_blank"}
-                    rel={item.key === "email" ? undefined : "noreferrer"}
-                  >
-                    {item.label} <span aria-hidden="true">↗</span>
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-        </section>
+        {contactLinks.map((item) => {
+          const href = links[item.key];
+          if (!href) return null;
+
+          const description =
+            item.key === "linkedin"
+              ? "Professional profile"
+              : item.key === "github"
+                ? "Projects and code"
+                : "Visit my profile";
+
+          return (
+            <a
+              className="contact-profile-link"
+              href={href}
+              key={item.key}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="contact-profile-icon" aria-hidden="true">
+                {item.label.slice(0, 1)}
+              </span>
+
+              <span className="contact-profile-copy">
+                <strong>{item.label}</strong>
+                <small>{description}</small>
+              </span>
+
+              <span className="contact-profile-arrow" aria-hidden="true">
+                ↗
+              </span>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</section>
       </main>
+
+      {resumeOpen && links.resume && (
+        <div
+          className="resume-modal-backdrop"
+          role="presentation"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setResumeOpen(false);
+          }}
+        >
+          <section
+            className="resume-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="resume-modal-title"
+          >
+            <header className="resume-modal-header">
+              <div>
+                <p className="resume-modal-kicker">RÉSUMÉ PREVIEW</p>
+                <h2 id="resume-modal-title">{profile.name}</h2>
+              </div>
+              <div className="resume-modal-actions">
+                <a
+                  className="button button-primary resume-download"
+                  href={links.resume}
+                  download="Srishti-Jaitly-Resume.pdf"
+                >
+                  Download résumé <span aria-hidden="true">↓</span>
+                </a>
+                <button
+                  className="resume-modal-close"
+                  type="button"
+                  onClick={() => setResumeOpen(false)}
+                  aria-label="Close résumé preview"
+                >
+                  ×
+                </button>
+              </div>
+            </header>
+            <iframe
+              className="resume-preview-frame"
+              src={links.resume}
+              title={`${profile.name} résumé PDF`}
+            />
+          </section>
+        </div>
+      )}
 
       <footer className="site-footer">
         <span>
