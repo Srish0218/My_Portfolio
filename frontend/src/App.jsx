@@ -1,23 +1,24 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-const API_URL = "/portfolio.json";
+const DATA_URL = "/portfolio.json";
+
 function App() {
   const [profile, setProfile] = useState(null);
-  const [apiError, setApiError] = useState("");
+  const [loadError, setLoadError] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
+  const [projectSearch, setProjectSearch] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
-  const [lightTheme, setLightTheme] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showTopButton, setShowTopButton] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
 
-    fetch(API_URL)
+    fetch(DATA_URL)
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Portfolio request failed");
+          throw new Error("Could not load portfolio.json");
         }
         return response.json();
       })
@@ -26,8 +27,8 @@ function App() {
       })
       .catch(() => {
         if (isMounted) {
-          setApiError(
-            "Could not load the portfolio. Check that the Python API is running.",
+          setLoadError(
+            "Could not load portfolio data. Check that frontend/public/portfolio.json exists and contains valid JSON.",
           );
         }
       });
@@ -97,24 +98,22 @@ function App() {
     }
 
     document.addEventListener("click", showClickRipple);
-
     return () => document.removeEventListener("click", showClickRipple);
   }, []);
 
   useEffect(() => {
-    document.body.classList.toggle("light-theme", lightTheme);
+    function closeMenuOnEscape(event) {
+      if (event.key === "Escape") setMenuOpen(false);
+    }
 
-    return () => document.body.classList.remove("light-theme");
-  }, [lightTheme]);
+    document.addEventListener("keydown", closeMenuOnEscape);
+    return () => document.removeEventListener("keydown", closeMenuOnEscape);
+  }, []);
 
-  if (apiError) {
+  if (loadError) {
     return (
       <main className="app-message">
-        <p>{apiError}</p>
-        <p>
-          Start your backend, then refresh this page. The API address is{" "}
-          <code>{API_URL}</code>.
-        </p>
+        <p>{loadError}</p>
       </main>
     );
   }
@@ -144,30 +143,56 @@ function App() {
     ...new Set(projects.map((project) => project.type).filter(Boolean)),
   ];
 
-  const visibleProjects =
-    activeFilter === "All"
-      ? projects
-      : projects.filter((project) => project.type === activeFilter);
+  const searchTerm = projectSearch.trim().toLowerCase();
+
+  const visibleProjects = projects.filter((project) => {
+    const matchesFilter =
+      activeFilter === "All" || project.type === activeFilter;
+
+    const searchableText = [
+      project.title,
+      project.type,
+      project.description,
+      project.result,
+      ...(project.tools || []),
+    ]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
+
+    return matchesFilter && searchableText.includes(searchTerm);
+  });
 
   function closeMenu() {
     setMenuOpen(false);
   }
 
-function sectionTitle(key, fallback) {
-  const section = sections[key];
+  function getSectionLabel(key, fallback) {
+    const section = sections[key];
 
-  if (typeof section === "string") return section;
+    if (typeof section === "string") return section;
 
-  // Your JSON labels look like "03 / EXPERIENCE".
-  if (section?.label) {
-    return section.label.split("/").slice(1).join("/").trim();
+    if (section?.label) {
+      return section.label.split("/").slice(1).join("/").trim();
+    }
+
+    return fallback;
   }
 
-  return fallback;
-}
+  function getEmailUrl(email) {
+    if (!email) return "";
+    return email.startsWith("mailto:") ? email : `mailto:${email}`;
+  }
+
+  const contactLinks =
+    ui.contact?.socialLinks || [
+      { key: "email", label: "Email" },
+      { key: "linkedin", label: "LinkedIn" },
+      { key: "github", label: "GitHub" },
+    ];
 
   return (
-    <div className={`site-shell${lightTheme ? " light-theme" : ""}`}>
+    <div className="site-shell">
       <div
         className="scroll-progress"
         style={{ transform: `scaleX(${scrollProgress / 100})` }}
@@ -204,15 +229,6 @@ function sectionTitle(key, fallback) {
           <a className="nav-contact" href="#contact" onClick={closeMenu}>
             {ui.navigationContact || "Contact"} <span aria-hidden="true">↗</span>
           </a>
-
-          <button
-            className="theme-toggle"
-            type="button"
-            onClick={() => setLightTheme((current) => !current)}
-            aria-label={lightTheme ? "Switch to dark theme" : "Switch to light theme"}
-          >
-            {lightTheme ? "☾" : "☼"}
-          </button>
         </nav>
       </header>
 
@@ -233,7 +249,7 @@ function sectionTitle(key, fallback) {
 
             <div className="hero-actions">
               <a className="button button-primary" href="#projects">
-                {ui.hero?.primaryButton || "Explore my work"} <span>↓</span>
+                {ui.hero?.projectsButton || "Explore my work"}
               </a>
 
               {links.resume && (
@@ -243,7 +259,7 @@ function sectionTitle(key, fallback) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {ui.hero?.resumeButton || "View résumé"} <span>↗</span>
+                  {ui.hero?.resumeButton || "View Resume"}
                 </a>
               )}
             </div>
@@ -277,9 +293,10 @@ function sectionTitle(key, fallback) {
         <section className="content-section about-section" id="about">
           <SectionHeading
             number="01"
-            label={sectionTitle("about", "About")}
+            label={getSectionLabel("about", "About")}
             title="Curious about data. Focused on useful outcomes."
           />
+
           <div className="about-content reveal">
             <p>{profile.about}</p>
             <div className="about-links">
@@ -294,7 +311,7 @@ function sectionTitle(key, fallback) {
                 </a>
               )}
               {links.email && (
-                <a href={links.email}>
+                <a href={getEmailUrl(links.email)}>
                   Email <span>↗</span>
                 </a>
               )}
@@ -305,9 +322,35 @@ function sectionTitle(key, fallback) {
         <section className="content-section projects-section" id="projects">
           <SectionHeading
             number="02"
-            label={sectionTitle("projects", "Projects")}
+            label={getSectionLabel("projects", "Projects")}
             title="Selected work"
           />
+
+          <div className="project-search-row">
+            <label className="project-search">
+              <span aria-hidden="true">⌕</span>
+              <input
+                type="search"
+                value={projectSearch}
+                onChange={(event) => setProjectSearch(event.target.value)}
+                placeholder="Search projects, tools, or skills..."
+                aria-label="Search projects"
+              />
+              {projectSearch && (
+                <button
+                  type="button"
+                  onClick={() => setProjectSearch("")}
+                  aria-label="Clear project search"
+                >
+                  Clear
+                </button>
+              )}
+            </label>
+
+            <span className="project-count">
+              {visibleProjects.length} of {projects.length} projects
+            </span>
+          </div>
 
           <div className="project-filters" aria-label="Filter projects">
             {filters.map((filter) => (
@@ -366,13 +409,19 @@ function sectionTitle(key, fallback) {
                 )}
               </article>
             ))}
+
+            {visibleProjects.length === 0 && (
+              <p className="empty-projects">
+                No projects match “{projectSearch}”. Try another search.
+              </p>
+            )}
           </div>
         </section>
 
         <section className="content-section experience-section" id="experience">
           <SectionHeading
             number="03"
-            label={sectionTitle("experience", "Experience")}
+            label={getSectionLabel("experience", "Experience")}
             title="Where I’ve made a difference."
           />
 
@@ -399,10 +448,13 @@ function sectionTitle(key, fallback) {
         </section>
 
         {profile.achievement && (
-          <section className="content-section achievement-section" id="achievement">
+          <section
+            className="content-section achievement-section"
+            id="achievement"
+          >
             <SectionHeading
               number="04"
-              label={sectionTitle("achievement", "Achievement")}
+              label={getSectionLabel("achievement", "Achievement")}
               title="A moment worth celebrating."
             />
 
@@ -410,9 +462,11 @@ function sectionTitle(key, fallback) {
               <span className="achievement-badge">✦ Recognition</span>
               <p className="achievement-award">{profile.achievement.award}</p>
               <h3>{profile.achievement.title}</h3>
+
               {profile.achievement.project && (
                 <p>{profile.achievement.project}</p>
               )}
+
               {profile.achievement.description && (
                 <p>{profile.achievement.description}</p>
               )}
@@ -423,7 +477,7 @@ function sectionTitle(key, fallback) {
         <section className="content-section skills-section" id="skills">
           <SectionHeading
             number="05"
-            label={sectionTitle("skills", "Skills")}
+            label={getSectionLabel("skills", "Skills")}
             title="Tools I work with"
           />
 
@@ -450,7 +504,7 @@ function sectionTitle(key, fallback) {
         <section className="content-section education-section" id="education">
           <SectionHeading
             number="06"
-            label={sectionTitle("education", "Education")}
+            label={getSectionLabel("education", "Education")}
             title="Learning that shaped my work"
           />
 
@@ -475,61 +529,63 @@ function sectionTitle(key, fallback) {
         </section>
 
         <section className="contact-section" id="contact">
-  <div className="contact-card reveal">
-    <span className="contact-orb" aria-hidden="true" />
+          <div className="contact-card reveal">
+            <span className="contact-orb" aria-hidden="true" />
 
-    <p className="eyebrow">
-      {ui.contact?.intro || "HAVE A QUESTION OR AN INTERESTING DATA CHALLENGE?"}
-    </p>
+            <p className="eyebrow">
+              {ui.contact?.intro ||
+                "HAVE A QUESTION OR AN INTERESTING DATA CHALLENGE?"}
+            </p>
 
-    <h2>
-      {ui.contact?.titleLineOne || "Let’s make"}
-      <span>{ui.contact?.titleLineTwo || "something useful."}</span>
-    </h2>
+            <h2>
+              {ui.contact?.titleLineOne || "Let’s make"}
+              <span>{ui.contact?.titleLineTwo || "something useful."}</span>
+            </h2>
 
-    <p className="contact-description">
-      {ui.contact?.description ||
-        "I’m open to conversations about data, AI, and interesting opportunities."}
-    </p>
+            <p className="contact-description">
+              {ui.contact?.description ||
+                "I’m open to conversations about data, AI, and interesting opportunities."}
+            </p>
 
-    {links.email && (
-      <a className="button button-primary contact-email" href={`mailto:${links.email.replace(/^mailto:/, "")}`}>
-        {ui.contact?.emailButton || "Email me"} <span>↗</span>
-      </a>
-    )}
+            {links.email && (
+              <a
+                className="button button-primary contact-email"
+                href={getEmailUrl(links.email)}
+              >
+                {ui.contact?.emailButton || "Email me"} <span>↗</span>
+              </a>
+            )}
 
-    <div className="contact-socials">
-      {(ui.contact?.socialLinks || [
-        { key: "email", label: "Email" },
-        { key: "linkedin", label: "LinkedIn" },
-        { key: "github", label: "GitHub" },
-      ]).map((item) => {
-        const href =
-          item.key === "email"
-            ? links.email
-              ? `mailto:${links.email.replace(/^mailto:/, "")}`
-              : ""
-            : links[item.key];
+            <div className="contact-socials">
+              {contactLinks.map((item) => {
+                const href =
+                  item.key === "email"
+                    ? getEmailUrl(links.email)
+                    : links[item.key];
 
-        return href ? (
-          <a
-            className="contact-social-link"
-            href={href}
-            key={item.key}
-            target={item.key === "email" ? undefined : "_blank"}
-            rel={item.key === "email" ? undefined : "noreferrer"}
-          >
-            {item.label} <span aria-hidden="true">↗</span>
-          </a>
-        ) : null;
-      })}
-    </div>
-  </div>
-</section>
+                if (!href) return null;
+
+                return (
+                  <a
+                    className="contact-social-link"
+                    href={href}
+                    key={item.key}
+                    target={item.key === "email" ? undefined : "_blank"}
+                    rel={item.key === "email" ? undefined : "noreferrer"}
+                  >
+                    {item.label} <span aria-hidden="true">↗</span>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer className="site-footer">
-        <span>© {new Date().getFullYear()} {profile.name}</span>
+        <span>
+          © {new Date().getFullYear()} {profile.name}
+        </span>
         <span>{branding.subtitle || "DATA · AI · AUTOMATION"}</span>
         {links.github && (
           <a href={links.github} target="_blank" rel="noreferrer">
@@ -556,7 +612,9 @@ function SectionHeading({ number, label, title }) {
   return (
     <div className="section-heading reveal">
       <div className="section-kicker">
-        <span>{number} / {label}</span>
+        <span>
+          {number} / {label}
+        </span>
         <i />
       </div>
       <h2>{title}</h2>
