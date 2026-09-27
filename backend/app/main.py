@@ -11,6 +11,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "https://srishti-jaitly-portfolio.vercel.app",
+        "https://srishti-portfolio-mocha.vercel.app",
     ],
     allow_methods=["GET"],
     allow_headers=["*"],
