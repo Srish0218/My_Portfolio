@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-const API_URL =
-  import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/api/portfolio";
+const API_URL = "https://my-portfolio-s5rd.onrender.com/api/portfolio";
 
 function App() {
   const [profile, setProfile] = useState(null);
