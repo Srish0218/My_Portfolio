@@ -1,0 +1,96 @@
+{
+  "name": "Srishti Jaitly",
+  "role": "Data Analyst",
+  "about": "I build useful data workflows and AI tools with Python, SQL, and language models. At TCS, I work on enterprise data processes. Previously, at WyzMindz, I built customer experience and NLP solutions.",
+  "links": {
+    "github": "https://github.com/SrishtiJaitly",
+    "linkedin": "https://www.linkedin.com/in/Srishti-Jaitly/",
+    "resume": "https://drive.google.com/drive/u/0/folders/17ThnbVthhsvUSbwZK4zU5PRvqfSZk90W",
+    "email": "srishtijaitly2002@gmail.com"
+  },
+  "projects": [
+    {
+      "title": "CareerGenie.ai",
+      "type": "AI",
+      "description": "An AI resume and career assistant that suggests roles, highlights skill gaps, and offers career insights.",
+      "result": "Analyzed 10+ resumes; improved job-search efficiency by 40%.",
+      "tools": ["LangChain", "LLMs", "NLP"],
+      "url": "https://github.com/SrishtiJaitly"
+    },
+    {
+      "title": "EinsteinAI",
+      "type": "AI",
+      "description": "A physics learning assistant using Gemini 1.5 Flash and a context-aware Streamlit interface.",
+      "result": "95% query accuracy and 60% fewer irrelevant answers.",
+      "tools": ["Gemini", "Streamlit", "Python"],
+      "url": "https://github.com/SrishtiJaitly"
+    },
+    {
+      "title": "Customer Experience Insights API",
+      "type": "Automation",
+      "description": "A FastAPI service connecting customer experience analysis, language models, and SQL.",
+      "result": "Automated conversational insights and improved audit accuracy by 40%.",
+      "tools": ["FastAPI", "LangChain", "SQL"],
+      "url": "https://github.com/SrishtiJaitly"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Data Analyst",
+      "company": "Tata Consultancy Services",
+      "dates": "April 2025 — Present",
+      "points": [
+        "Support enterprise data integration, transformation, and automation using Data360 Analyze.",
+        "Build Python and SQL pipelines with ODW and SSIS integration, improving processing efficiency by about 30%.",
+        "Improved reporting workflows, reducing manual effort by 25%+."
+      ]
+    },
+    {
+      "role": "Data Scientist Intern",
+      "company": "WyzMindz Solutions Pvt. Ltd.",
+      "dates": "May 2024 — April 2025",
+      "points": [
+        "Built a FastAPI service for customer experience analysis using LLMs and SQL.",
+        "Automated three client websites, reducing manual effort by 60%.",
+        "Created NLP workflows that reduced processing time by 50%."
+      ]
+    }
+  ],
+  "achievement": {
+    "title": "SuryoJasvi AI Festival 2025",
+    "award": "First Place · ₹50,000",
+    "project": "Automated Insight with Assured Brand Integrity"
+  },
+  "skills": [
+    {
+      "title": "Code & data",
+      "skills": ["Python", "SQL", "MySQL", "Pandas", "Excel"]
+    },
+    {
+      "title": "AI & language",
+      "skills": ["NLP", "Machine Learning", "LLMs", "LangChain", "Hugging Face"]
+    },
+    {
+      "title": "Automation",
+      "skills": ["FastAPI", "Selenium", "BeautifulSoup", "Requests", "n8n"]
+    },
+    {
+      "title": "Tools",
+      "skills": ["Streamlit", "SQL Workbench", "SQL Developer", "PyCharm"]
+    }
+  ],
+  "education": [
+    {
+      "degree": "B.E. Computer Science Engineering",
+      "school": "Chandigarh University",
+      "place": "Mohali, Punjab",
+      "dates": "2020 — 2024"
+    },
+    {
+      "degree": "Intermediate (+2)",
+      "school": "Ryan International School",
+      "place": "Ludhiana, Punjab",
+      "dates": "2019 — 2020"
+    }
+  ]
+}
