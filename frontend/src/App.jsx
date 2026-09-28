@@ -190,7 +190,6 @@ function App() {
   const experience = profile.experience || [];
   const skills = profile.skills || [];
   const education = profile.education || [];
-  const stats = profile.stats || [];
 
   const filters = [
     "All",
@@ -325,13 +324,13 @@ function App() {
             <p className="hero-description">{profile.about}</p>
 
             <div className="hero-actions">
-              <a className="button button-primary" href="#projects">
-                {ui.hero?.projectsButton || "Explore my work"}
-              </a>
+              {/*<a className="button button-primary" href="#projects">*/}
+              {/*  {ui.hero?.projectsButton || "Explore my work"}*/}
+              {/*</a>*/}
 
               {links.resume && (
                 <button
-                  className="button button-secondary"
+                  className="button button-primary"
                   type="button"
                   onClick={() => setResumeOpen(true)}
                 >

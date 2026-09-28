@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2eee785c-33e3-460b-b528-895fe4e599f3" name="Changes" comment="commit to display">
-      <change afterPath="$PROJECT_DIR$/backend/app/data/SRISHTI_JAITLY__Resume.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/data/portfolio.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/data/portfolio.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="2eee785c-33e3-460b-b528-895fe4e599f3" name="Changes" comment="28 Sept 2026 Commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,23 +27,23 @@
 }]]></component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0000000000000524" />
-      <entry key="S10" value="1.0000002287856657" />
-      <entry key="S30" value="1.0061161238363578" />
-      <entry key="S60" value="1.078205650923433" />
-      <entry key="M2" value="1.2796527327301361" />
-      <entry key="M5" value="1.600686161717734" />
-      <entry key="M10" value="1.775039459113001" />
-      <entry key="M15" value="1.8437557971549152" />
-      <entry key="M30" value="1.9228534117425053" />
-      <entry key="H1" value="2.282160750281233" />
-      <entry key="H2" value="5.435020688383159" />
-      <entry key="H4" value="14.107620172227511" />
-      <entry key="D1" value="38.00352059248037" />
-      <entry key="W1" value="45.58396912291276" />
+      <entry key="MS100" value="1.0009631214243349" />
+      <entry key="MS500" value="1.2703557068054594" />
+      <entry key="S2" value="2.3444364903856343" />
+      <entry key="S5" value="3.4301356680949193" />
+      <entry key="S10" value="4.083919441675597" />
+      <entry key="S30" value="4.6710307147261485" />
+      <entry key="S60" value="4.934512689105226" />
+      <entry key="M2" value="5.242640944341676" />
+      <entry key="M5" value="5.607179630729295" />
+      <entry key="M10" value="5.783922595579054" />
+      <entry key="M15" value="5.851142995211842" />
+      <entry key="M30" value="5.923049824911974" />
+      <entry key="H1" value="5.961023602951229" />
+      <entry key="H2" value="6.0246926186679435" />
+      <entry key="H4" value="7.2655312029138095" />
+      <entry key="D1" value="31.45832728307565" />
+      <entry key="W1" value="49.048448669961466" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -71,23 +65,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.009551877169469286" />
-      <entry key="MS500" value="0.3944734204262326" />
-      <entry key="S2" value="0.7925094261721836" />
-      <entry key="S5" value="0.911174956210875" />
-      <entry key="S10" value="0.9545550750457981" />
-      <entry key="S30" value="0.9907243824441284" />
-      <entry key="S60" value="1.0704333440719949" />
-      <entry key="M2" value="1.2756939418769688" />
-      <entry key="M5" value="1.599059307441785" />
-      <entry key="M10" value="1.774214451305483" />
-      <entry key="M15" value="1.8432027612377488" />
-      <entry key="M30" value="1.9225747981281969" />
-      <entry key="H1" value="2.281995067431428" />
-      <entry key="H2" value="5.4348069815972435" />
-      <entry key="H4" value="14.107345380372672" />
-      <entry key="D1" value="38.00340533620136" />
-      <entry key="W1" value="45.58394970551087" />
+      <entry key="MS100" value="0.9735982480603107" />
+      <entry key="MS500" value="1.2636737057881289" />
+      <entry key="S2" value="2.341304375520816" />
+      <entry key="S5" value="3.428174648286297" />
+      <entry key="S10" value="4.082715158266843" />
+      <entry key="S30" value="4.670558541048659" />
+      <entry key="S60" value="4.93425106505523" />
+      <entry key="M2" value="5.2424896673116255" />
+      <entry key="M5" value="5.607108420984816" />
+      <entry key="M10" value="5.783884316312306" />
+      <entry key="M15" value="5.851116791981163" />
+      <entry key="M30" value="5.923036356207529" />
+      <entry key="H1" value="5.961016760730698" />
+      <entry key="H2" value="6.024687431489394" />
+      <entry key="H4" value="7.265504633078152" />
+      <entry key="D1" value="31.45824977993561" />
+      <entry key="W1" value="49.048430291259095" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
@@ -115,14 +109,24 @@
     "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "/Users/srishtijaitly02/PycharmProjects/MyPortfolio/backend/app/data",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
     "to.speed.mode.migration.done": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend/app/data" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/public" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="MyPortfolio" />
@@ -170,7 +174,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1790498189923</updated>
-      <workItem from="1790498190958" duration="20095000" />
+      <workItem from="1790498190958" duration="24704000" />
     </task>
     <task id="LOCAL-00001" summary="27 sept 2026 commit">
       <option name="closed" value="true" />
@@ -284,7 +288,23 @@
       <option name="project" value="LOCAL" />
       <updated>1790538854055</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="commit to display">
+      <option name="closed" value="true" />
+      <created>1790542131663</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1790542131663</updated>
+    </task>
+    <task id="LOCAL-00016" summary="28 Sept 2026 Commit">
+      <option name="closed" value="true" />
+      <created>1790584819779</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1790584819779</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,7 +315,8 @@
     <MESSAGE value="Set live portfolio API URL" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;backend/app/main.py" />
     <MESSAGE value="commit to display" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit to display" />
+    <MESSAGE value="28 Sept 2026 Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="28 Sept 2026 Commit" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/MyPortfolio$main.coverage" NAME="main Coverage Results" MODIFIED="1790502868389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
