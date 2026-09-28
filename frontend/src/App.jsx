@@ -320,7 +320,7 @@ function App() {
 
             <h1>
               {ui.hero?.greeting || "Hi, I’m"}
-              <span>{profile.name?.split(" ")[0] || profile.name}.</span>
+              <span>{profile.name?.split(" ")[0] || profile.name}</span>
             </h1>
 
             <p className="hero-description">{profile.about}</p>
@@ -336,7 +336,7 @@ function App() {
                   type="button"
                   onClick={() => setResumeOpen(true)}
                 >
-                  {ui.hero?.resumeButton || "View résumé"}
+                  {ui.hero?.resumeButton || "View Resume"}
                 </button>
               )}
             </div>
