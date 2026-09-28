@@ -559,8 +559,8 @@ button {
 
 .projects-section {
   max-width: none;
-  padding-left: max(clamp(24px, 7vw, 110px), calc((100vw - 1020px) / 2));
-  padding-right: max(clamp(24px, 7vw, 110px), calc((100vw - 1020px) / 2));
+  padding-left: max(clamp(24px, 5vw, 80px), calc((100vw - 1440px) / 2));
+  padding-right: max(clamp(24px, 5vw, 80px), calc((100vw - 1440px) / 2));
   color: #f4f6ff;
   background:
     radial-gradient(ellipse at 85% 8%, rgb(125 182 255 / 12%), transparent 32rem),
@@ -965,9 +965,6 @@ button {
 .achievement-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 24px 70px rgb(0 0 0 / 28%);
-}
-.achievement-card p {
-  transform: translateY(-5px);
 }
 
 /* Contact */
@@ -2319,7 +2316,7 @@ button {
 }
 
 .project-card {
-  flex: 0 0 clamp(320px, 37vw, 430px);
+  flex: 0 0 clamp(300px, 28vw, 380px);
   direction: ltr;
   scroll-snap-align: start;
 }
@@ -2362,5 +2359,59 @@ button {
 @media (max-width: 600px) {
   .project-card {
     flex-basis: min(88vw, 370px);
+  }
+}
+
+/* Compact experience cards with independently scrollable bullet points. */
+.experience-card {
+  gap: 24px;
+  padding: 26px 18px;
+}
+
+.experience-details h3 {
+  margin: 6px 0 12px;
+  font-size: 23px;
+}
+
+.experience-details ul {
+  max-height: 180px;
+  overflow-y: auto;
+  padding-right: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--lime) transparent;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.experience-details li {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.experience-details ul::-webkit-scrollbar {
+  width: 3px;
+}
+
+.experience-details ul::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.experience-details ul::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--lime), var(--violet));
+}
+
+@media (max-width: 760px) {
+  .experience-card {
+    gap: 12px;
+    padding: 20px 14px;
+  }
+
+  .experience-details h3 {
+    font-size: 21px;
+  }
+
+  .experience-details ul {
+    max-height: 160px;
   }
 }
