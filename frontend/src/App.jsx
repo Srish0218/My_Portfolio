@@ -320,23 +320,23 @@ function App() {
 
             <h1>
               {ui.hero?.greeting || "Hi, I’m"}
-              <span>{profile.name?.split(" ")[0] || profile.name}</span>
+              <span>{profile.name?.split(" ")[0] || profile.name}.</span>
             </h1>
 
             <p className="hero-description">{profile.about}</p>
 
             <div className="hero-actions">
-              {/*<a className="button button-primary" href="#projects">*/}
-              {/*  {ui.hero?.projectsButton || "Explore my work"}*/}
-              {/*</a>*/}
+              <a className="button button-primary" href="#projects">
+                {ui.hero?.projectsButton || "Explore my work"}
+              </a>
 
               {links.resume && (
                 <button
-                  className="button button-primary"
+                  className="button button-secondary"
                   type="button"
                   onClick={() => setResumeOpen(true)}
                 >
-                  {ui.hero?.resumeButton || "View Resume"}
+                  {ui.hero?.resumeButton || "View résumé"}
                 </button>
               )}
             </div>
@@ -460,6 +460,7 @@ function App() {
                     <span className="project-featured">Featured</span>
                   )}
                   <span className="project-number">
+                    {/*{String(projects.length - projects.indexOf(project)).padStart(2, "0")}*/}
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
@@ -582,7 +583,7 @@ function App() {
 
               {profile.achievement.description && (
   <div className="achievement-description">
-    <p>{profile.achievement.description
+    {profile.achievement.description
       .split(/\n\s*\n/)
       .filter(Boolean)
       .map((block, index) => {
@@ -607,7 +608,6 @@ function App() {
           </div>
         );
       })}
-    </p>
   </div>
 )}
             </article>

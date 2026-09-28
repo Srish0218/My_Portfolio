@@ -40,6 +40,7 @@
   --heading-gradient: linear-gradient(105deg, #7ab5e3 0%, #2fd5a1 32%, #6e62da 55%, #2f7a62 76%, #69d3b0 100%);
   --name-gradient: linear-gradient(105deg, #7ab5e3 0%, #2fd5a1 32%, #6e62da 55%, #2f7a62 76%, #69d3b0 100%);
   --display: "Manrope", sans-serif;
+  --body-font: "DM Sans", sans-serif;
   --mono: "DM Mono", monospace;
 }
 
@@ -785,7 +786,7 @@ button {
 .achievement-award {
   margin: 30px 0 8px;
   color: var(--lime);
-  font: 650 14px var(--mono);
+  font: 600 14px var(--mono);
 }
 
 .achievement-card h3 {
@@ -798,12 +799,6 @@ button {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.8;
-}
-
-.achievement-description p{
-  color: var(--muted);
-  font: 600 14px var(--display);
-
 }
 
 /* Skills */
@@ -2256,11 +2251,11 @@ button {
   }
 }
 
-/* Right-to-left horizontal project carousel. Swipe, trackpad, or use scrollbar. */
+/* Horizontal project carousel starts at the left and scrolls toward the right. */
 .projects-grid {
   display: flex;
   flex-direction: row;
-  direction: rtl;
+  direction: ltr;
   gap: 16px;
   overflow-x: auto;
   overflow-y: hidden;
