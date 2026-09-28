@@ -40,7 +40,6 @@
   --heading-gradient: linear-gradient(105deg, #7ab5e3 0%, #2fd5a1 32%, #6e62da 55%, #2f7a62 76%, #69d3b0 100%);
   --name-gradient: linear-gradient(105deg, #7ab5e3 0%, #2fd5a1 32%, #6e62da 55%, #2f7a62 76%, #69d3b0 100%);
   --display: "Manrope", sans-serif;
-  --body-font: "DM Sans", sans-serif;
   --mono: "DM Mono", monospace;
 }
 
@@ -786,7 +785,7 @@ button {
 .achievement-award {
   margin: 30px 0 8px;
   color: var(--lime);
-  font: 600 14px var(--mono);
+  font: 650 14px var(--mono);
 }
 
 .achievement-card h3 {
@@ -799,6 +798,12 @@ button {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.8;
+}
+
+.achievement-description p{
+  color: var(--muted);
+  font: 600 14px var(--display);
+
 }
 
 /* Skills */

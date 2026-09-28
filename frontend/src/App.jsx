@@ -336,7 +336,7 @@ function App() {
                   type="button"
                   onClick={() => setResumeOpen(true)}
                 >
-                  {ui.hero?.resumeButton || "View Resume"}
+                  {ui.hero?.resumeButton || "View résumé"}
                 </button>
               )}
             </div>
@@ -460,7 +460,7 @@ function App() {
                     <span className="project-featured">Featured</span>
                   )}
                   <span className="project-number">
-                    {String(projects.length - projects.indexOf(project)).padStart(2, "0")}
+                    {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
 
@@ -582,7 +582,7 @@ function App() {
 
               {profile.achievement.description && (
   <div className="achievement-description">
-    {profile.achievement.description
+    <p>{profile.achievement.description
       .split(/\n\s*\n/)
       .filter(Boolean)
       .map((block, index) => {
@@ -607,6 +607,7 @@ function App() {
           </div>
         );
       })}
+    </p>
   </div>
 )}
             </article>
