@@ -326,13 +326,13 @@ function App() {
             <p className="hero-description">{profile.about}</p>
 
             <div className="hero-actions">
-              {/*<a className="button button-primary" href="#projects">*/}
-              {/*  {ui.hero?.projectsButton || "Explore my work"}*/}
-              {/*</a>*/}
+              <a className="button button-primary" href="#projects">
+                {ui.hero?.projectsButton || "Explore my work"}
+              </a>
 
               {links.resume && (
                 <button
-                  className="button button-primary"
+                  className="button button-secondary"
                   type="button"
                   onClick={() => setResumeOpen(true)}
                 >
@@ -460,7 +460,7 @@ function App() {
                     <span className="project-featured">Featured</span>
                   )}
                   <span className="project-number">
-                    {String(index + 1).padStart(2, "0")}
+                    {String(projects.length - projects.indexOf(project)).padStart(2, "0")}
                   </span>
                 </div>
 

@@ -139,6 +139,77 @@
       ],
       "githubUrl": "https://github.com/Srish0218/EmoEpicure",
       "documentationPdf": null
+    },
+    {
+      "title": "Atmospherix",
+      "type": "Data",
+      "description": "A responsive weather app for checking current conditions, viewing hourly forecasts, and comparing weather across two cities.",
+      "tools": [
+        "Python",
+        "Flask",
+        "HTML",
+        "CSS",
+        "OpenWeatherMap API"
+      ],
+      "githubUrl": "https://github.com/Srish0218/atmospherix",
+      "liveUrl": null,
+      "documentationPdf": null
+    },
+    {
+      "title": "GeeksforGeeks SEO Analysis",
+      "type": "Data",
+      "description": "A Streamlit tool that analyzes GeeksforGeeks article metadata, keywords, keyword density, and the most common words in article content.",
+      "tools": [
+        "Python",
+        "Streamlit",
+        "BeautifulSoup",
+        "NLTK",
+        "Data Visualization"
+      ],
+      "githubUrl": "https://github.com/Srish0218/GeeksforGeeks-SEO-Analysis-Web-App",
+      "liveUrl": "https://srish-geeksforgeeks-seo-analysis.streamlit.app/",
+      "documentationPdf": null
+    },
+    {
+      "title": "Image Editor",
+      "type": "Utility",
+      "description": "A browser-based image editor for uploading images, viewing image details, resizing and rotating, and applying filters such as blur, detail, emboss, and smooth.",
+      "tools": [
+        "Python",
+        "Streamlit",
+        "Pillow"
+      ],
+      "githubUrl": "https://github.com/Srish0218/Image-Editor",
+      "liveUrl": "https://srish-image-editor.streamlit.app/",
+      "documentationPdf": null
+    },
+    {
+      "title": "FaceFinesseFusion",
+      "type": "AI",
+      "description": "A deep-learning app that detects multiple faces in an image and predicts an age range and gender for each detected face.",
+      "tools": [
+        "Python",
+        "Streamlit",
+        "OpenCV",
+        "Deep Learning"
+      ],
+      "githubUrl": "https://github.com/Srish0218/FaceFinesseFusion",
+      "liveUrl": null,
+      "documentationPdf": null
+    },
+    {
+      "title": "CryptoGuardian",
+      "type": "Security",
+      "description": "A Streamlit utility for hashing text and files, comparing hash values with visualizations, and demonstrating password hashing and hash algorithms.",
+      "tools": [
+        "Python",
+        "Streamlit",
+        "Hashlib",
+        "Data Visualization"
+      ],
+      "githubUrl": "https://github.com/Srish0218/CryptoGuardian",
+      "liveUrl": "https://srish0218-cryptoguardian.streamlit.app/",
+      "documentationPdf": null
     }
   ],
   "experience": [
