@@ -1,10 +1,8 @@
 {
   "name": "Srishti Jaitly",
   "role": "Data Scientist",
-  "location": "LUDHIANA, INDIA",
   "about": "I’m a data and AI professional at Tata Consultancy Services, working with Data360 Analyze, Oracle Data Warehouse, Python, and SQL to build reliable data pipelines and automate workflows. Previously, I developed NLP and LLM solutions at WyzMindz and won first place at the SuryoJasvi AI Festival 2025.",
   "branding": {
-    "monogram": "SJ",
     "subtitle": "DATA · AI · AUTOMATION",
     "homeLabel": "Srishti Jaitly home"
   },
@@ -41,75 +39,27 @@
         "label": "Education"
       }
     ],
-    "navigationContact": "Contact",
-    "hero": {
-      "greeting": "Hi, I’m",
-      "projectsButton": "HI",
-      "resumeButton": "View résumé ↗"
-    },
-    "sections": {
-      "about": {
-        "label": "01 / ABOUT",
-        "titleLineOne": "Curious by nature.",
-        "titleLineTwo": "Analytical by choice."
-      },
-      "projects": {
-        "label": "02 / SELECTED WORK",
-        "titleLineOne": "Projects with",
-        "titleLineTwo": "a purpose.",
-        "description": "A few ways I’ve used data and AI to solve practical problems."
-      },
-      "experience": {
-        "label": "03 / EXPERIENCE",
-        "titleLineOne": "Where I’ve",
-        "titleLineTwo": "made a difference."
-      },
-      "achievement": {
-        "label": "04 / ACHIEVEMENT",
-        "projectPrefix": "Winning project:"
-      },
-      "skills": {
-        "label": "05 / TOOLKIT",
-        "titleLineOne": "Tools I use",
-        "titleLineTwo": "to make things."
-      },
-      "education": {
-        "label": "06 / EDUCATION"
-      }
-    },
-    "contact": {
-      "intro": "HAVE A QUESTION OR AN INTERESTING DATA CHALLENGE?",
-      "emailButton": "Email me",
-      "socialLinks": [
-        {
-          "key": "linkedin",
-          "label": "LinkedIn"
-        },
-        {
-          "key": "github",
-          "label": "GitHub"
-        }
-      ]
-    }
+    "navigationContact": "Contact"
   },
   "projects": [
     {
       "title": "CareerGenie.ai",
       "type": "AI",
-      "icon": "✳",
       "description": "An AI resume and career assistant that suggests roles, highlights skill gaps, and offers career insights.",
       "result": "Analyzed 10+ resumes; improved job-search efficiency by 40%.",
       "tools": [
         "LangChain",
         "LLMs",
-        "NLP"
+        "NLP",
+        "Streamlit",
+        "BeautifulSoup"
       ],
-      "url": "https://github.com/SrishtiJaitly"
+      "githubUrl": "https://github.com/Srish0218/CareerGenie.ai",
+      "documentationPdf": null
     },
     {
       "title": "EinsteinAI",
       "type": "AI",
-      "icon": "✦",
       "description": "A physics learning assistant using Gemini 1.5 Flash and a context-aware Streamlit interface.",
       "result": "95% query accuracy and 60% fewer irrelevant answers.",
       "tools": [
@@ -117,12 +67,12 @@
         "Streamlit",
         "Python"
       ],
-      "url": "https://github.com/SrishtiJaitly"
+      "githubUrl": "https://github.com/Srish0218/EinsteinAI",
+      "documentationPdf": null
     },
     {
       "title": "Customer Experience Insights API",
       "type": "Automation",
-      "icon": "↗",
       "description": "A FastAPI service connecting customer experience analysis, language models, and SQL.",
       "result": "Automated conversational insights and improved audit accuracy by 40%.",
       "tools": [
@@ -130,7 +80,65 @@
         "LangChain",
         "SQL"
       ],
-      "url": "https://github.com/SrishtiJaitly"
+      "documentationPdf": null
+    },
+    {
+      "title": "TweetVibeTracker",
+      "type": "AI",
+      "description": "A Streamlit app that uses a TensorFlow deep-learning model to analyze single sentences, multi-line text, and uploaded CSV or Excel files for sentiment.",
+      "tools": [
+        "Python",
+        "TensorFlow",
+        "Streamlit",
+        "Pandas",
+        "NLP"
+      ],
+      "githubUrl": "https://github.com/Srish0218/TweetVibeTracker",
+      "liveUrl": "https://tweetvibetracker-srish0218.streamlit.app/",
+      "documentationPdf": null
+    },
+    {
+      "title": "DataScaperX",
+      "type": "Automation",
+      "description": "A Streamlit web-scraping tool for collecting product, article, and course information from Flipkart, GeeksforGeeks, and Coursera, with optional email notifications.",
+      "tools": [
+        "Python",
+        "Streamlit",
+        "BeautifulSoup",
+        "Requests",
+        "Pandas"
+      ],
+      "githubUrl": "https://github.com/Srish0218/DataScaperX",
+      "liveUrl": "https://srish-datascaperx.streamlit.app/",
+      "documentationPdf": null
+    },
+    {
+      "title": "ElectraPulse",
+      "type": "Data",
+      "description": "An interactive dashboard for exploring electric-vehicle adoption, geography, vehicle types, popular makes, electric ranges, and registration trends, with a registration forecast.",
+      "tools": [
+        "Python",
+        "Streamlit",
+        "Pandas",
+        "Data Visualization"
+      ],
+      "githubUrl": "https://github.com/Srish0218/ElectraPulse",
+      "liveUrl": "https://srish0218-electrapulse.streamlit.app/",
+      "documentationPdf": null
+    },
+    {
+      "title": "EmoEpicure",
+      "type": "AI",
+      "description": "A restaurant review sentiment-analysis app for processing individual or multiple reviews and spreadsheet uploads, with visualizations of sentiment and rating trends.",
+      "tools": [
+        "Python",
+        "Streamlit",
+        "NLP",
+        "Sentiment Analysis",
+        "Pandas"
+      ],
+      "githubUrl": "https://github.com/Srish0218/EmoEpicure",
+      "documentationPdf": null
     }
   ],
   "experience": [

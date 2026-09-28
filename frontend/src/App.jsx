@@ -13,6 +13,7 @@ function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showTopButton, setShowTopButton] = useState(false);
   const [resumeOpen, setResumeOpen] = useState(false);
+  const [activeDocument, setActiveDocument] = useState(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -146,6 +147,7 @@ function App() {
       if (event.key === "Escape") {
         setMenuOpen(false);
         setResumeOpen(false);
+        setActiveDocument(null);
       }
     }
 
@@ -154,7 +156,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (!resumeOpen) return undefined;
+    if (!resumeOpen && !activeDocument) return undefined;
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -162,7 +164,7 @@ function App() {
     return () => {
       document.body.style.overflow = previousOverflow;
     };
-  }, [resumeOpen]);
+  }, [resumeOpen, activeDocument]);
 
   if (loadError) {
     return (
@@ -463,15 +465,15 @@ function App() {
                 </div>
 
                 <h3>{project.title}</h3>
-                <p>{project.description}</p>
+                {project.description && <p>{project.description}</p>}
 
                 {project.result && (
                   <p className="project-result">{project.result}</p>
                 )}
 
-                {project.tools?.length > 0 && (
+                {project.tools?.filter(Boolean).length > 0 && (
                   <div className="tag-list">
-                    {project.tools.map((tool) => (
+                    {project.tools.filter(Boolean).map((tool) => (
                       <span className="tag" key={tool}>
                         {tool}
                       </span>
@@ -479,16 +481,43 @@ function App() {
                   </div>
                 )}
 
-                {project.url && (
-                  <a
-                    className="project-link"
-                    href={project.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`View ${project.title}`}
-                  >
-                    View project <span>↗</span>
-                  </a>
+                {(project.githubUrl || project.url || project.liveUrl || project.documentationPdf) && (
+                  <div className="project-links">
+                    {(project.githubUrl || project.url) && (
+                      <a
+                        className="project-link"
+                        href={project.githubUrl || project.url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        GitHub <span>↗</span>
+                      </a>
+                    )}
+                    {project.liveUrl && (
+                      <a
+                        className="project-link"
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Live project <span>↗</span>
+                      </a>
+                    )}
+                    {project.documentationPdf && (
+                      <button
+                        className="project-link project-doc-button"
+                        type="button"
+                        onClick={() =>
+                          setActiveDocument({
+                            title: project.title,
+                            url: project.documentationPdf,
+                          })
+                        }
+                      >
+                        View documentation <span>↗</span>
+                      </button>
+                    )}
+                  </div>
                 )}
               </article>
             ))}
@@ -759,6 +788,52 @@ function App() {
               className="resume-preview-frame"
               src={links.resume}
               title={`${profile.name} résumé PDF`}
+            />
+          </section>
+        </div>
+      )}
+
+      {activeDocument && (
+        <div
+          className="resume-modal-backdrop"
+          role="presentation"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setActiveDocument(null);
+          }}
+        >
+          <section
+            className="resume-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="project-document-title"
+          >
+            <header className="resume-modal-header">
+              <div>
+                <p className="resume-modal-kicker">PROJECT DOCUMENTATION</p>
+                <h2 id="project-document-title">{activeDocument.title}</h2>
+              </div>
+              <div className="resume-modal-actions">
+                <a
+                  className="button button-primary resume-download"
+                  href={activeDocument.url}
+                  download
+                >
+                  Download PDF <span aria-hidden="true">↓</span>
+                </a>
+                <button
+                  className="resume-modal-close"
+                  type="button"
+                  onClick={() => setActiveDocument(null)}
+                  aria-label="Close project documentation"
+                >
+                  ×
+                </button>
+              </div>
+            </header>
+            <iframe
+              className="resume-preview-frame"
+              src={activeDocument.url}
+              title={`${activeDocument.title} project documentation PDF`}
             />
           </section>
         </div>
