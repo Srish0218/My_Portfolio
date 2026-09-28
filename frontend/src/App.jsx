@@ -326,17 +326,17 @@ function App() {
             <p className="hero-description">{profile.about}</p>
 
             <div className="hero-actions">
-              <a className="button button-primary" href="#projects">
-                {ui.hero?.projectsButton || "Explore my work"}
-              </a>
+              {/*<a className="button button-primary" href="#projects">*/}
+              {/*  {ui.hero?.projectsButton || "Explore my work"}*/}
+              {/*</a>*/}
 
               {links.resume && (
                 <button
-                  className="button button-secondary"
+                  className="button button-primary"
                   type="button"
                   onClick={() => setResumeOpen(true)}
                 >
-                  {ui.hero?.resumeButton || "View résumé"}
+                  {ui.hero?.resumeButton || "View Resume"}
                 </button>
               )}
             </div>
@@ -583,7 +583,7 @@ function App() {
 
               {profile.achievement.description && (
   <div className="achievement-description">
-    {profile.achievement.description
+    <p>{profile.achievement.description
       .split(/\n\s*\n/)
       .filter(Boolean)
       .map((block, index) => {
@@ -608,6 +608,7 @@ function App() {
           </div>
         );
       })}
+    </p>
   </div>
 )}
             </article>

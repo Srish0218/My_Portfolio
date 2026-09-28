@@ -941,6 +941,12 @@ button {
   transform: translateY(-5px);
   box-shadow: 0 24px 70px rgb(0 0 0 / 28%);
 }
+.achievement-description p {
+  margin: 0;
+  font: 60 15px var(--mono);
+  letter-spacing: -0.07em;
+  color: var(--muted);
+}
 
 /* Contact */
 
