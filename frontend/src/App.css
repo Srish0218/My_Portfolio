@@ -2415,3 +2415,167 @@ button {
     max-height: 160px;
   }
 }
+
+/* Compact achievement section and scrollable award highlights. */
+.achievement-section .section-heading h2 {
+  max-width: 760px;
+  font-size: clamp(42px, 5.4vw, 70px);
+  line-height: 1.02;
+}
+
+.achievement-card {
+  width: min(100%, 660px);
+  padding: clamp(22px, 3.5vw, 36px);
+}
+
+.achievement-award {
+  margin: 22px 0 8px;
+  font-size: 12px;
+}
+
+.achievement-card h3 {
+  font-size: clamp(25px, 3vw, 36px);
+}
+
+.achievement-card > p:not(.achievement-award) {
+  font-size: 14px;
+}
+
+.achievement-description {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.achievement-description ul {
+  max-height: 132px;
+  overflow-y: auto;
+  padding-right: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--lime) transparent;
+}
+
+.achievement-description ul::-webkit-scrollbar {
+  width: 3px;
+}
+
+.achievement-description ul::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.achievement-description ul::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--lime), var(--violet));
+}
+
+@media (max-width: 600px) {
+  .achievement-section .section-heading h2 {
+    font-size: clamp(38px, 10vw, 54px);
+  }
+
+  .achievement-card {
+    padding: 22px 18px;
+  }
+}
+
+/* Scroll the full achievement description, including paragraphs and bullets. */
+.achievement-description {
+  max-height: 260px;
+  overflow-y: auto;
+  padding-right: 14px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--lime) transparent;
+}
+
+.achievement-description ul {
+  max-height: none;
+  overflow: visible;
+  padding-right: 0;
+  scrollbar-width: auto;
+  scrollbar-color: auto;
+}
+
+.achievement-description::-webkit-scrollbar {
+  width: 4px;
+}
+
+.achievement-description::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.achievement-description::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--lime), var(--violet));
+}
+
+.achievement-description ul::-webkit-scrollbar {
+  display: none;
+}
+
+/* Keep every native scrollbar hairline-thin. */
+html,
+body,
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--lime) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+.projects-grid::-webkit-scrollbar,
+.experience-details ul::-webkit-scrollbar,
+.achievement-description::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--lime), var(--violet));
+}
+
+/* Final override: hairline scrollbars everywhere, with transparent tracks. */
+html,
+body,
+* {
+  scrollbar-width: thin !important;
+  scrollbar-color: rgb(87 243 191 / 48%) transparent !important;
+}
+
+*::-webkit-scrollbar,
+.projects-grid::-webkit-scrollbar,
+.experience-details ul::-webkit-scrollbar,
+.achievement-description::-webkit-scrollbar,
+.achievement-description ul::-webkit-scrollbar {
+  width: 2px !important;
+  height: 2px !important;
+  background: transparent !important;
+}
+
+*::-webkit-scrollbar-track,
+.projects-grid::-webkit-scrollbar-track,
+.experience-details ul::-webkit-scrollbar-track,
+.achievement-description::-webkit-scrollbar-track,
+.achievement-description ul::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+*::-webkit-scrollbar-thumb,
+.projects-grid::-webkit-scrollbar-thumb,
+.experience-details ul::-webkit-scrollbar-thumb,
+.achievement-description::-webkit-scrollbar-thumb,
+.achievement-description ul::-webkit-scrollbar-thumb {
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: rgb(87 243 191 / 48%) !important;
+}
+
+.achievement-description ul::-webkit-scrollbar {
+  display: block !important;
+}
