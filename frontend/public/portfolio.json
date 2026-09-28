@@ -43,45 +43,53 @@
   },
   "projects": [
     {
-      "title": "CareerGenie.ai",
-      "type": "AI",
-      "description": "An AI resume and career assistant that suggests roles, highlights skill gaps, and offers career insights.",
-      "result": "Analyzed 10+ resumes; improved job-search efficiency by 40%.",
-      "tools": [
-        "LangChain",
-        "LLMs",
-        "NLP",
-        "Streamlit",
-        "BeautifulSoup"
-      ],
-      "githubUrl": "https://github.com/Srish0218/CareerGenie.ai",
-      "documentationPdf": null
-    },
+  "title": "CareerGenie.ai",
+  "type": "AI-Powered Career Assistant",
+  "description": "Built an AI-powered resume and career assistant that analyzes resumes, recommends relevant job roles, identifies skill gaps, and provides personalized career guidance.",
+  "result": "Analyzed 10+ resumes and improved job-search efficiency by 40%.",
+  "tools": [
+    "Python",
+    "Streamlit",
+    "LangChain",
+    "Google Gemini",
+    "Natural Language Processing",
+    "BeautifulSoup"
+  ],
+  "githubUrl": "https://github.com/Srish0218/CareerGenie.ai",
+  "liveUrl": null,
+  "documentationPdf": null
+},
     {
-      "title": "EinsteinAI",
-      "type": "AI",
-      "description": "A physics learning assistant using Gemini 1.5 Flash and a context-aware Streamlit interface.",
-      "result": "95% query accuracy and 60% fewer irrelevant answers.",
-      "tools": [
-        "Gemini",
-        "Streamlit",
-        "Python"
-      ],
-      "githubUrl": "https://github.com/Srish0218/EinsteinAI",
-      "documentationPdf": null
-    },
+  "title": "EinsteinAI",
+  "type": "AI-Powered Physics Learning Assistant",
+  "description": "Developed a physics-focused conversational assistant powered by Google Gemini 1.5 Flash, with a Streamlit chat interface and context-aware responses that redirect non-physics questions.",
+  "result": "Achieved 95% query accuracy and reduced irrelevant responses by 60%.",
+  "tools": [
+    "Python",
+    "Streamlit",
+    "Google Gemini 1.5 Flash"
+  ],
+  "githubUrl": "https://github.com/Srish0218/EinsteinAI",
+  "liveUrl": "https://einsteinai-srish0218.streamlit.app/",
+  "documentationPdf": null
+},
     {
-      "title": "Customer Experience Insights API",
-      "type": "Automation",
-      "description": "A FastAPI service connecting customer experience analysis, language models, and SQL.",
-      "result": "Automated conversational insights and improved audit accuracy by 40%.",
-      "tools": [
-        "FastAPI",
-        "LangChain",
-        "SQL"
-      ],
-      "documentationPdf": null
-    },
+  "title": "Customer Experience Insights API",
+  "type": "AI-Powered Automation",
+  "description": "Built a FastAPI service that automates customer conversation analysis by integrating Gemini-powered insights with SQL data workflows, transcript generation, and OpsGuru reporting.",
+  "result": "Automated conversational insights and improved audit accuracy by 40%.",
+  "tools": [
+    "Python",
+    "FastAPI",
+    "Google Gemini",
+    "SQL",
+    "Pandas",
+    "Requests"
+  ],
+  "githubUrl": "https://github.com/Srish0218/CredAPIpackage/",
+  "liveUrl": null,
+  "documentationPdf": null
+},
     {
       "title": "TweetVibeTracker",
       "type": "AI",
