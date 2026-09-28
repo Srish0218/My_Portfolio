@@ -7,16 +7,25 @@
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
+  --reveal-delay: 1s;
 
   --paper: #0b1020;
   --ink: #eef3ff;
   --muted: #a5aec4;
-  --line: #28334b;
+  --line: #3a4e78;
   --deep: #080d1a;
-  --lime: #91f7d5;
-  --violet: #a399ff;
-  --blue: #80c0ff;
+  --lime: #00ffaf;
+  --violet: #463ca1;
+  --pink: #cf1ed6;
   --card: #131b2e;
+  --glass-fill: linear-gradient(145deg, rgb(32 25 64 / 0.42), rgb(17 58 41 / 0.44));
+  --glass-fill-hover: linear-gradient(145deg, rgb(19 66 49 / 0.66), rgb(36 27 74 / 0.84));
+  --glass-border: linear-gradient(145deg, rgb(9 48 34), rgb(24 16 60));
+  --glass-border-hover: linear-gradient(145deg, rgb(7 0 25), rgb(0 32 19));
+  --glass-shadow: 0 18px 45px rgb(0 0 0 / 18%);
+  --glass-radius: 16px;
+  --heading-gradient: linear-gradient(105deg, #7ab5e3 0%, #2fd5a1 32%, #6e62da 55%, #2f7a62 76%, #69d3b0 100%);
+  --name-gradient: linear-gradient(105deg, #7ab5e3 0%, #2fd5a1 32%, #6e62da 55%, #2f7a62 76%, #69d3b0 100%);
   --display: "Manrope", sans-serif;
   --mono: "DM Mono", monospace;
 }
@@ -81,7 +90,7 @@ button {
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, var(--lime), var(--violet), var(--blue));
+  background: linear-gradient(90deg, var(--lime), var(--violet), var(--pink));
   transform-origin: left center;
   pointer-events: none;
 }
@@ -206,9 +215,24 @@ button {
 .hero-copy h1 span {
   display: block;
   color: transparent;
-  background: linear-gradient(100deg, var(--violet), var(--lime) 75%);
+  background: var(--name-gradient);
+  background-size: 260% 100%;
+  background-position: 0% 50%;
   background-clip: text;
   -webkit-background-clip: text;
+  animation: name-gradient-flow 7s ease-in-out infinite alternate;
+}
+
+@keyframes name-gradient-flow {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy h1 span {
+    animation: none;
+    background-position: 50% 50%;
+  }
 }
 
 .hero-description {
@@ -421,7 +445,32 @@ button {
   font: 700 clamp(42px, 6vw, 76px) / 1.04 var(--display);
   letter-spacing: -0.075em;
 }
+.section-heading h2 {
+  color: transparent;
+  background: var(--heading-gradient);
+  background-size: 220% 100%;
+  background-position: 0% 50%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: section-heading-shimmer 10s ease-in-out infinite alternate;
+}
 
+@keyframes section-heading-shimmer {
+  from {
+    background-position: 0% 50%;
+  }
+
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-heading h2 {
+    animation: none;
+    background-position: 50% 50%;
+  }
+}
 /* About */
 
 .about-content {
@@ -2028,5 +2077,106 @@ button {
   .resume-modal-backdrop,
   .resume-modal {
     animation: none;
+  }
+}
+
+/* Shared glass card treatment, driven by the palette variables in :root. */
+:is(
+  .project-card,
+  .focus-card,
+  .skill-card,
+  .experience-card,
+  .education-card,
+  .achievement-card,
+  .contact-links-panel
+) {
+  border: 1px solid var(--glass-border);
+  border-radius: var(--glass-radius);
+  background: var(--glass-fill);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  transition:
+    transform 240ms ease,
+    border-color 240ms ease,
+    background 240ms ease,
+    box-shadow 240ms ease;
+}
+
+.experience-list,
+.education-list {
+  border: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.experience-card,
+.education-card {
+  border-top: 1px solid var(--glass-border);
+}
+
+:is(
+  .project-card,
+  .focus-card,
+  .skill-card,
+  .experience-card,
+  .education-card,
+  .achievement-card
+):hover {
+  border-color: var(--glass-border-hover);
+  background: var(--glass-fill-hover);
+  box-shadow:
+    0 22px 56px rgb(0 0 0 / 25%),
+    inset 0 1px 0 rgb(255 255 255 / 12%);
+}
+
+:is(.project-card, .focus-card, .skill-card, .achievement-card):hover {
+  transform: translateY(-5px);
+}
+
+:is(.experience-card, .education-card):hover {
+  transform: translateY(-3px);
+}
+
+/* Animated gradient for every numbered section title. */
+:root {
+  --section-title-gradient: linear-gradient(
+    105deg,
+    #eef3ff 0%,
+    #b9c8ff 28%,
+    #a7f5dd 52%,
+    #b8d9ff 74%,
+    #eef3ff 100%
+  );
+  --list-point-color: #00ffaf;
+}
+
+.section-heading h2 {
+  color: transparent !important;
+  background-image: var(--section-title-gradient) !important;
+  background-size: 260% 100%;
+  background-position: 0% 50%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: section-title-color-flow 9s ease-in-out infinite alternate;
+}
+
+@keyframes section-title-color-flow {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+.experience-details li::marker,
+.achievement-card li::marker,
+.project-card li::marker,
+.education-card li::marker {
+  color: var(--list-point-color) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-heading h2 {
+    animation: none;
+    background-position: 50% 50%;
   }
 }
