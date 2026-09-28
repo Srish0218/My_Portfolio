@@ -279,13 +279,13 @@ button {
 
 .button-primary {
   color: #08151b;
-  background: linear-gradient(110deg, var(--lime), #201b4a);
+  background: var(--lime);
   box-shadow: 0 8px 22px rgb(32 190 170 / 16%);
 }
 
 .button-primary:hover {
-  box-shadow: 0 12px 28px rgb(32 190 170 / 25%);
-  background: linear-gradient(110deg, #201b4a , var(--lime));
+  box-shadow: 0 12px 28px rgb(32 190 170 / 0.6);
+  background: var(--lime);
 }
 
 .button-secondary {

@@ -793,7 +793,6 @@ function App() {
 function SectionHeading({ number, label, title }) {
   return (
     <div className="section-heading reveal">
-      <p>hi</p>
       <div className="section-kicker">
         <span>
           {number} / {label}
