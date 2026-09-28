@@ -44,7 +44,7 @@
   "projects": [
     {
   "title": "CareerGenie.ai",
-  "type": "AI-Powered Career Assistant",
+  "type": "AI",
   "description": "Built an AI-powered resume and career assistant that analyzes resumes, recommends relevant job roles, identifies skill gaps, and provides personalized career guidance.",
   "result": "Analyzed 10+ resumes and improved job-search efficiency by 40%.",
   "tools": [
@@ -61,7 +61,7 @@
 },
     {
   "title": "EinsteinAI",
-  "type": "AI-Powered Physics Learning Assistant",
+  "type": "AI",
   "description": "Developed a physics-focused conversational assistant powered by Google Gemini 1.5 Flash, with a Streamlit chat interface and context-aware responses that redirect non-physics questions.",
   "result": "Achieved 95% query accuracy and reduced irrelevant responses by 60%.",
   "tools": [
@@ -75,7 +75,7 @@
 },
     {
   "title": "Customer Experience Insights API",
-  "type": "AI-Powered Automation",
+  "type": "Automation",
   "description": "Built a FastAPI service that automates customer conversation analysis by integrating Gemini-powered insights with SQL data workflows, transcript generation, and OpsGuru reporting.",
   "result": "Automated conversational insights and improved audit accuracy by 40%.",
   "tools": [
