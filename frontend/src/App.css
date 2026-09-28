@@ -761,8 +761,8 @@ button {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  max-width: 760px;
-  margin-top: 38px;
+  width: min(100%, 720px);
+  margin-top: 32px;
   padding: clamp(24px, 5vw, 48px);
   border: 1px solid rgb(255 255 255 / 12%);
   border-radius: 18px;
@@ -791,14 +791,39 @@ button {
 
 .achievement-card h3 {
   margin: 0 0 12px;
-  font: 800 clamp(30px, 5vw, 54px) / 1.08 var(--display);
-  letter-spacing: -0.07em;
+  font: 800 clamp(27px, 3.5vw, 42px) / 1.1 var(--display);
+  letter-spacing: -0.055em;
 }
 
-.achievement-card > p:last-child {
+.achievement-card > p:not(.achievement-award) {
+  margin: 0 0 14px;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.achievement-description {
   color: var(--muted);
-  font-size: 13px;
-  line-height: 1.8;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.achievement-description p {
+  margin: 0 0 14px;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.achievement-description ul {
+  margin: 0 0 16px;
+  padding-left: 1.3em;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.achievement-description li::marker {
+  color: var(--list-point-color);
 }
 
 /* Skills */
