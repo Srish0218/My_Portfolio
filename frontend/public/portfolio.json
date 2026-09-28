@@ -45,7 +45,7 @@
     {
   "title": "CareerGenie.ai",
   "type": "AI",
-  "description": "Built an AI-powered resume and career assistant that analyzes resumes, recommends relevant job roles, identifies skill gaps, and provides personalized career guidance.",
+  "description": "AI-Powered Career Assistant - Built an AI-powered resume and career assistant that analyzes resumes, recommends relevant job roles, identifies skill gaps, and provides personalized career guidance.",
   "result": "Analyzed 10+ resumes and improved job-search efficiency by 40%.",
   "tools": [
     "Python",
@@ -62,7 +62,7 @@
     {
   "title": "EinsteinAI",
   "type": "AI",
-  "description": "Developed a physics-focused conversational assistant powered by Google Gemini 1.5 Flash, with a Streamlit chat interface and context-aware responses that redirect non-physics questions.",
+  "description": "AI-Powered Physics Learning Assistant - Developed a physics-focused conversational assistant powered by Google Gemini 1.5 Flash, with a Streamlit chat interface and context-aware responses that redirect non-physics questions.",
   "result": "Achieved 95% query accuracy and reduced irrelevant responses by 60%.",
   "tools": [
     "Python",
@@ -75,8 +75,8 @@
 },
     {
   "title": "Customer Experience Insights API",
-  "type": "Automation",
-  "description": "Built a FastAPI service that automates customer conversation analysis by integrating Gemini-powered insights with SQL data workflows, transcript generation, and OpsGuru reporting.",
+  "type": ["Automation","AI"],
+  "description": "AI-Powered Automation - Built a FastAPI service that automates customer conversation analysis by integrating Gemini-powered insights with SQL data workflows, transcript generation, and OpsGuru reporting.",
   "result": "Automated conversational insights and improved audit accuracy by 40%.",
   "tools": [
     "Python",
@@ -91,93 +91,103 @@
   "documentationPdf": null
 },
     {
-      "title": "TweetVibeTracker",
-      "type": "AI",
-      "description": "A Streamlit app that uses a TensorFlow deep-learning model to analyze single sentences, multi-line text, and uploaded CSV or Excel files for sentiment.",
-      "tools": [
-        "Python",
-        "TensorFlow",
-        "Streamlit",
-        "Pandas",
-        "NLP"
-      ],
-      "githubUrl": "https://github.com/Srish0218/TweetVibeTracker",
-      "liveUrl": "https://tweetvibetracker-srish0218.streamlit.app/",
-      "documentationPdf": null
-    },
+  "title": "TweetVibeTracker",
+  "type": "AI",
+  "description": "AI-Powered Sentiment Analysis - Developed a Streamlit app that uses a TensorFlow deep-learning model to analyze sentiment in single sentences, multi-line text, and uploaded CSV or Excel files. Supports batch processing with downloadable results.",
+  "result": "Enabled sentiment analysis across individual text and uploaded datasets, with predictions added directly to processed files.",
+  "tools": [
+    "Python",
+    "TensorFlow",
+    "Streamlit",
+    "Pandas",
+    "Natural Language Processing"
+  ],
+  "githubUrl": "https://github.com/Srish0218/TweetVibeTracker",
+  "liveUrl": "https://tweetvibetracker-srish0218.streamlit.app/",
+  "documentationPdf": null
+},
     {
-      "title": "DataScaperX",
-      "type": "Automation",
-      "description": "A Streamlit web-scraping tool for collecting product, article, and course information from Flipkart, GeeksforGeeks, and Coursera, with optional email notifications.",
-      "tools": [
-        "Python",
-        "Streamlit",
-        "BeautifulSoup",
-        "Requests",
-        "Pandas"
-      ],
-      "githubUrl": "https://github.com/Srish0218/DataScaperX",
-      "liveUrl": "https://srish-datascaperx.streamlit.app/",
-      "documentationPdf": null
-    },
+  "title": "DataScaperX",
+  "type": ["Web Scraping", "Data Automation"],
+  "description": "Built a Streamlit web scraping tool that extracts product details from Flipkart, articles from GeeksForGeeks, and course information from Coursera. Includes optional email notifications for significant data changes.",
+  "result": "Automated data collection across e-commerce, educational, and course websites through a single user-friendly interface.",
+  "tools": [
+    "Python",
+    "Streamlit",
+    "BeautifulSoup",
+    "Requests",
+    "Pandas"
+  ],
+  "githubUrl": "https://github.com/Srish0218/DataScaperX",
+  "liveUrl": "https://srish-datascaperx.streamlit.app/",
+  "documentationPdf": null
+},
     {
-      "title": "ElectraPulse",
-      "type": "Data",
-      "description": "An interactive dashboard for exploring electric-vehicle adoption, geography, vehicle types, popular makes, electric ranges, and registration trends, with a registration forecast.",
-      "tools": [
-        "Python",
-        "Streamlit",
-        "Pandas",
-        "Data Visualization"
-      ],
-      "githubUrl": "https://github.com/Srish0218/ElectraPulse",
-      "liveUrl": "https://srish0218-electrapulse.streamlit.app/",
-      "documentationPdf": null
-    },
+  "title": "ElectraPulse",
+  "type": ["Data Analytics" , "Visualization"],
+  "description": "Built an interactive Streamlit dashboard to explore electric vehicle adoption, geographic distribution, vehicle types, popular makes and models, and electric range. Includes data cleaning, interactive visualizations, and forecasts based on historical registration trends.",
+  "result": "Made EV registration trends easier to explore through interactive analysis and forecasting.",
+  "tools": [
+    "Python",
+    "Streamlit",
+    "Pandas",
+    "Data Visualization",
+    "Exponential Growth Curve Fitting"
+  ],
+  "githubUrl": "https://github.com/Srish0218/ElectraPulse",
+  "liveUrl": "https://srish0218-electrapulse.streamlit.app/",
+  "documentationPdf": null
+},
     {
-      "title": "EmoEpicure",
-      "type": "AI",
-      "description": "A restaurant review sentiment-analysis app for processing individual or multiple reviews and spreadsheet uploads, with visualizations of sentiment and rating trends.",
-      "tools": [
-        "Python",
-        "Streamlit",
-        "NLP",
-        "Sentiment Analysis",
-        "Pandas"
-      ],
-      "githubUrl": "https://github.com/Srish0218/EmoEpicure",
-      "documentationPdf": null
-    },
+  "title": "EmoEpicure",
+  "type": "AI",
+  "description": "AI-Powered Customer Sentiment Analysis - Developed a Streamlit application for restaurant owners to analyze customer reviews using NLP and a Bag of Words model with a trained sentiment classifier. Supports individual and multi-line reviews, Excel uploads, user authentication, and visualizations of sentiment and rating trends.",
+  "result": "Enabled restaurant owners to process customer feedback and explore sentiment patterns across reviews and ratings.",
+  "tools": [
+    "Python",
+    "Streamlit",
+    "Natural Language Processing",
+    "Scikit-learn",
+    "Pandas",
+    "SQLite"
+  ],
+  "githubUrl": "https://github.com/Srish0218/EmoEpicure",
+  "liveUrl": null,
+  "documentationPdf": null
+},
     {
-      "title": "Atmospherix",
-      "type": "Data",
-      "description": "A responsive weather app for checking current conditions, viewing hourly forecasts, and comparing weather across two cities.",
-      "tools": [
-        "Python",
-        "Flask",
-        "HTML",
-        "CSS",
-        "OpenWeatherMap API"
-      ],
-      "githubUrl": "https://github.com/Srish0218/atmospherix",
-      "liveUrl": null,
-      "documentationPdf": null
-    },
+  "title": "Atmospherix",
+  "type": "API",
+  "description": "Weather Forecasting Web App - Developed a responsive Flask web application that provides current weather conditions, hourly forecasts, and side-by-side comparisons for cities worldwide using the OpenWeatherMap API.",
+  "result": "Made weather forecasts and city-to-city comparisons accessible through a mobile-friendly web interface.",
+  "tools": [
+    "Python",
+    "Flask",
+    "HTML",
+    "CSS",
+    "OpenWeatherMap API"
+  ],
+  "githubUrl": "https://github.com/Srish0218/atmospherix",
+  "liveUrl": null,
+  "documentationPdf": null
+},
     {
-      "title": "GeeksforGeeks SEO Analysis",
-      "type": "Data",
-      "description": "A Streamlit tool that analyzes GeeksforGeeks article metadata, keywords, keyword density, and the most common words in article content.",
-      "tools": [
-        "Python",
-        "Streamlit",
-        "BeautifulSoup",
-        "NLTK",
-        "Data Visualization"
-      ],
-      "githubUrl": "https://github.com/Srish0218/GeeksforGeeks-SEO-Analysis-Web-App",
-      "liveUrl": "https://srish-geeksforgeeks-seo-analysis.streamlit.app/",
-      "documentationPdf": null
-    },
+  "title": "GeeksforGeeks SEO Analysis Web App",
+  "type": ["SEO" ,"Visualization"],
+  "description": "Created a Streamlit app that analyzes GeeksforGeeks articles by extracting page metadata, meta keywords, article keyword density, and frequently used words. Presents keyword distribution through interactive charts.",
+  "result": "Provides a quick, visual overview of article metadata and on-page keyword usage to support SEO analysis.",
+  "tools": [
+    "Python",
+    "Streamlit",
+    "BeautifulSoup",
+    "NLTK",
+    "Pandas",
+    "Data Visualization"
+  ],
+  "githubUrl": "https://github.com/Srish0218/GeeksforGeeks-SEO-Analysis-Web-App",
+  "liveUrl": "https://srish-geeksforgeeks-seo-analysis.streamlit.app/",
+  "documentationPdf": null
+},
     {
       "title": "Image Editor",
       "type": "Utility",
@@ -206,19 +216,22 @@
       "documentationPdf": null
     },
     {
-      "title": "CryptoGuardian",
-      "type": "Security",
-      "description": "A Streamlit utility for hashing text and files, comparing hash values with visualizations, and demonstrating password hashing and hash algorithms.",
-      "tools": [
-        "Python",
-        "Streamlit",
-        "Hashlib",
-        "Data Visualization"
-      ],
-      "githubUrl": "https://github.com/Srish0218/CryptoGuardian",
-      "liveUrl": "https://srish0218-cryptoguardian.streamlit.app/",
-      "documentationPdf": null
-    }
+  "title": "CryptoGuardian",
+  "type": ["Cryptography" , "Data Security"],
+  "description": "Developed a Streamlit app for data integrity and security tasks, including hashing data with multiple algorithms, comparing hash values, and hashing passwords.",
+  "result": "Made common hashing and hash comparison operations accessible through an interactive web interface.",
+  "tools": [
+    "Python",
+    "Streamlit",
+    "Cryptographic Hashing",
+    "JavaScript",
+    "HTML",
+    "CSS"
+  ],
+  "githubUrl": "https://github.com/Srish0218/CryptoGuardian",
+  "liveUrl": "https://srish0218-cryptoguardian.streamlit.app/",
+  "documentationPdf": null
+}
   ],
   "experience": [
     {

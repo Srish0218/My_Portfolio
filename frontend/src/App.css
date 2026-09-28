@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
 
 :root {
   font-family: "DM Sans", sans-serif;
@@ -39,7 +39,7 @@
   --list-point-color: var(--lime);
   --heading-gradient: linear-gradient(105deg, #7ab5e3 0%, #2fd5a1 32%, #6e62da 55%, #2f7a62 76%, #69d3b0 100%);
   --name-gradient: linear-gradient(105deg, #7ab5e3 0%, #2fd5a1 32%, #6e62da 55%, #2f7a62 76%, #69d3b0 100%);
-  --display: "Manrope", sans-serif;
+  --display: "Plus Jakarta Sans", sans-serif;
   --body-font: "DM Sans", sans-serif;
   --mono: "DM Mono", monospace;
 }
@@ -940,12 +940,6 @@ button {
 .achievement-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 24px 70px rgb(0 0 0 / 28%);
-}
-.achievement-description p {
-  margin: 0;
-  font: 60 15px var(--mono);
-  letter-spacing: -0.07em;
-  color: var(--muted);
 }
 
 /* Contact */
@@ -2269,8 +2263,8 @@ button {
   scroll-snap-type: x mandatory;
   scroll-padding-inline: 4px;
   overscroll-behavior-inline: contain;
-  scrollbar-width: auto;
-  scrollbar-color: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--lime) transparent;
 }
 
 @supports selector(::-webkit-scrollbar) {

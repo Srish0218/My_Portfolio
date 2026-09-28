@@ -189,27 +189,39 @@ function App() {
   const navigation = ui.navigation || [];
   const sections = ui.sections || {};
   const projects = profile.projects || [];
+  const getProjectTypes = (project) =>
+    (Array.isArray(project.type) ? project.type : [project.type]).filter(Boolean);
+  const collectSearchText = (value) => {
+    if (value == null) return [];
+    if (Array.isArray(value)) return value.flatMap(collectSearchText);
+    if (typeof value === "object") return Object.values(value).flatMap(collectSearchText);
+    return [String(value)];
+  };
   const experience = profile.experience || [];
   const skills = profile.skills || [];
   const education = profile.education || [];
 
   const filters = [
     "All",
-    ...new Set(projects.map((project) => project.type).filter(Boolean)),
+    ...new Set(projects.flatMap((project) => getProjectTypes(project))),
   ];
 
   const searchTerm = projectSearch.trim().toLowerCase();
 
   const visibleProjects = projects.filter((project) => {
     const matchesFilter =
-      activeFilter === "All" || project.type === activeFilter;
+      activeFilter === "All" || getProjectTypes(project).includes(activeFilter);
 
     const searchableText = [
       project.title,
-      project.type,
+      ...getProjectTypes(project),
       project.description,
       project.result,
-      ...(project.tools || []),
+      ...collectSearchText(project.tools),
+      ...collectSearchText(project.skills),
+      ...collectSearchText(project.skill),
+      ...collectSearchText(project.technologies),
+      ...collectSearchText(project.techStack),
     ]
       .filter(Boolean)
       .join(" ")
@@ -455,12 +467,15 @@ function App() {
                 style={{ "--reveal-delay": `${index * 90}ms` }}
               >
                 <div className="project-card-top">
-                  <span className="project-type">{project.type}</span>
+                  {getProjectTypes(project).map((type) => (
+                    <span className="project-type" key={type}>
+                      {type}
+                    </span>
+                  ))}
                   {project.featured && (
                     <span className="project-featured">Featured</span>
                   )}
                   <span className="project-number">
-                    {/*{String(projects.length - projects.indexOf(project)).padStart(2, "0")}*/}
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
@@ -583,7 +598,7 @@ function App() {
 
               {profile.achievement.description && (
   <div className="achievement-description">
-    <p>{profile.achievement.description
+    {profile.achievement.description
       .split(/\n\s*\n/)
       .filter(Boolean)
       .map((block, index) => {
@@ -608,7 +623,6 @@ function App() {
           </div>
         );
       })}
-    </p>
   </div>
 )}
             </article>
@@ -780,7 +794,7 @@ function App() {
                   className="resume-modal-close"
                   type="button"
                   onClick={() => setResumeOpen(false)}
-                  aria-label="Close résumé preview"
+                  aria-label="Close resume preview"
                 >
                   ×
                 </button>
@@ -789,7 +803,7 @@ function App() {
             <iframe
               className="resume-preview-frame"
               src={links.resume}
-              title={`${profile.name} résumé PDF`}
+              title={`${profile.name} resume PDF`}
             />
           </section>
         </div>
