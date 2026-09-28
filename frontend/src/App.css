@@ -966,6 +966,9 @@ button {
   transform: translateY(-5px);
   box-shadow: 0 24px 70px rgb(0 0 0 / 28%);
 }
+.achievement-card p {
+  transform: translateY(-5px);
+}
 
 /* Contact */
 

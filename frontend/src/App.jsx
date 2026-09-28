@@ -598,7 +598,7 @@ function App() {
 
               {profile.achievement.description && (
   <div className="achievement-description">
-    {profile.achievement.description
+    <p>{profile.achievement.description
       .split(/\n\s*\n/)
       .filter(Boolean)
       .map((block, index) => {
@@ -622,7 +622,7 @@ function App() {
             )}
           </div>
         );
-      })}
+      })}</p>
   </div>
 )}
             </article>
