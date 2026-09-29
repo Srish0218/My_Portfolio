@@ -15,6 +15,7 @@ function App() {
   const [resumeOpen, setResumeOpen] = useState(false);
   const [activeDocument, setActiveDocument] = useState(null);
   const [activeExperienceIndex, setActiveExperienceIndex] = useState(null);
+  const [achievementOpen, setAchievementOpen] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -339,17 +340,17 @@ function App() {
             <p className="hero-description">{profile.about}</p>
 
             <div className="hero-actions">
-              <a className="button button-primary" href="#projects">
-                {ui.hero?.projectsButton || "Explore my work"}
-              </a>
+              {/*<a className="button button-primary" href="#projects">*/}
+              {/*  {ui.hero?.projectsButton || "Explore my work"}*/}
+              {/*</a>*/}
 
               {links.resume && (
                 <button
-                  className="button button-secondary"
+                  className="button button-primary"
                   type="button"
                   onClick={() => setResumeOpen(true)}
                 >
-                  {ui.hero?.resumeButton || "View résumé"}
+                  {ui.hero?.resumeButton || "View Resume" }
                 </button>
               )}
             </div>
@@ -564,6 +565,7 @@ function App() {
                 <article
                   className={`experience-item${isOpen ? " is-open" : ""}`}
                   key={`${job.company}-${index}`}
+                  style={{ "--timeline-delay": `${index * 110}ms` }}
                 >
                   <span className="experience-timeline-dot" aria-hidden="true" />
                   <button
@@ -620,44 +622,61 @@ function App() {
               title="A moment worth celebrating."
             />
 
-            <article className="achievement-card reveal">
-              <span className="achievement-badge">✦ Recognition</span>
-              <p className="achievement-award">{profile.achievement.award}</p>
-              <h3>{profile.achievement.title}</h3>
+            <article className={`achievement-card${achievementOpen ? " is-open" : ""}`}>
+              <button
+                className="achievement-trigger"
+                type="button"
+                aria-expanded={achievementOpen}
+                aria-controls="achievement-details"
+                onClick={() => setAchievementOpen((open) => !open)}
+              >
+                <span className="achievement-badge">✦ Recognition</span>
+                <span className="achievement-award">{profile.achievement.award}</span>
+                <span className="achievement-card-title">{profile.achievement.title}</span>
+                <span className="achievement-trigger-icon" aria-hidden="true">
+                  {achievementOpen ? "−" : "+"}
+                </span>
+              </button>
 
-              {profile.achievement.project && (
-                <p>{profile.achievement.project}</p>
+              {achievementOpen && (
+                <div className="achievement-expanded" id="achievement-details">
+                  {profile.achievement.project && (
+                    <p className="achievement-project">
+                      {profile.achievement.project}
+                    </p>
+                  )}
+
+                  {profile.achievement.description && (
+                    <div className="achievement-description">
+                      {profile.achievement.description
+                        .split(/\n\s*\n/)
+                        .filter(Boolean)
+                        .map((block, index) => {
+                          const lines = block.split("\n").filter(Boolean);
+                          const bullets = lines
+                            .filter((line) => line.trim().startsWith("•"))
+                            .map((line) => line.trim().replace(/^•\s*/, ""));
+                          const text = lines
+                            .filter((line) => !line.trim().startsWith("•"))
+                            .join(" ");
+
+                          return (
+                            <div key={index}>
+                              {text && <p>{text}</p>}
+                              {bullets.length > 0 && (
+                                <ul>
+                                  {bullets.map((bullet, bulletIndex) => (
+                                    <li key={bulletIndex}>{bullet}</li>
+                                  ))}
+                                </ul>
+                              )}
+                            </div>
+                          );
+                        })}
+                    </div>
+                  )}
+                </div>
               )}
-
-              {profile.achievement.description && (
-  <div className="achievement-description">
-    {profile.achievement.description
-      .split(/\n\s*\n/)
-      .filter(Boolean)
-      .map((block, index) => {
-        const lines = block.split("\n").filter(Boolean);
-        const bullets = lines
-          .filter((line) => line.trim().startsWith("•"))
-          .map((line) => line.trim().replace(/^•\s*/, ""));
-        const text = lines
-          .filter((line) => !line.trim().startsWith("•"))
-          .join(" ");
-
-        return (
-          <div key={index}>
-            {text && <p>{text}</p>}
-            {bullets.length > 0 && (
-              <ul>
-                {bullets.map((bullet, bulletIndex) => (
-                  <li key={bulletIndex}>{bullet}</li>
-                ))}
-              </ul>
-            )}
-          </div>
-        );
-      })}
-  </div>
-)}
             </article>
           </section>
         )}
@@ -812,7 +831,7 @@ function App() {
           >
             <header className="resume-modal-header">
               <div>
-                <p className="resume-modal-kicker">RÉSUMÉ PREVIEW</p>
+                <p className="resume-modal-kicker">RESUME PREVIEW</p>
                 <h2 id="resume-modal-title">{profile.name}</h2>
               </div>
               <div className="resume-modal-actions">
@@ -827,7 +846,7 @@ function App() {
                   className="resume-modal-close"
                   type="button"
                   onClick={() => setResumeOpen(false)}
-                  aria-label="Close résumé preview"
+                  aria-label="Close RESUME preview"
                 >
                   ×
                 </button>
@@ -836,7 +855,7 @@ function App() {
             <iframe
               className="resume-preview-frame"
               src={links.resume}
-              title={`${profile.name} résumé PDF`}
+              title={`${profile.name} RESUME PDF`}
             />
           </section>
         </div>
