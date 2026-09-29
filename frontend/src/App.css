@@ -2643,3 +2643,174 @@ body {
     font-size: clamp(2.3rem, 10vw, 3.8rem);
   }
 }
+
+/* Compact clickable experience timeline. */
+.experience-timeline {
+  position: relative;
+  width: min(100%, 980px);
+  margin: 28px auto 0;
+  padding: 0 0 0 28px;
+  border: 0;
+}
+
+.experience-timeline::before {
+  position: absolute;
+  top: 18px;
+  bottom: 18px;
+  left: 8px;
+  width: 1px;
+  content: "";
+  background: linear-gradient(180deg, var(--lime), var(--violet), transparent);
+}
+
+.experience-item {
+  position: relative;
+  margin: 0 0 12px;
+  overflow: visible;
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  background: var(--glass-fill);
+  box-shadow: var(--glass-shadow);
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.experience-item:hover,
+.experience-item.is-open {
+  border-color: var(--glass-border-hover);
+  background: var(--glass-fill-hover);
+}
+
+.experience-timeline-dot {
+  position: absolute;
+  top: 24px;
+  left: -25px;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--lime);
+  border-radius: 50%;
+  background: var(--paper);
+  box-shadow: 0 0 12px rgb(87 243 191 / 26%);
+}
+
+.experience-trigger {
+  display: grid;
+  grid-template-columns: minmax(130px, 0.36fr) minmax(0, 1fr) 32px;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  padding: 16px 20px;
+  border: 0;
+  border-radius: inherit;
+  color: var(--ink);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.experience-trigger-date {
+  color: var(--muted);
+  font: 500 11px/1.5 var(--mono);
+}
+
+.experience-trigger-main {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.experience-trigger-role {
+  font: 700 18px/1.25 var(--display);
+  letter-spacing: -0.035em;
+}
+
+.experience-trigger-company {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.experience-trigger-icon {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  color: var(--accent);
+  font-size: 18px;
+  line-height: 1;
+}
+
+.experience-expanded {
+  padding: 0 20px 18px calc(20px + min(36%, 130px));
+  animation: experience-reveal 180ms ease both;
+}
+
+.experience-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 0 0 10px;
+  color: var(--accent);
+  font: 500 11px/1.5 var(--mono);
+}
+
+.experience-expanded ul {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.experience-expanded li {
+  padding-left: 3px;
+}
+
+.experience-expanded li::marker {
+  color: var(--list-point-color);
+}
+
+@keyframes experience-reveal {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+  .experience-timeline {
+    padding-left: 22px;
+  }
+
+  .experience-timeline::before {
+    left: 5px;
+  }
+
+  .experience-timeline-dot {
+    left: -22px;
+  }
+
+  .experience-trigger {
+    grid-template-columns: minmax(0, 1fr) 30px;
+    gap: 8px 12px;
+    padding: 14px;
+  }
+
+  .experience-trigger-date {
+    grid-column: 1 / -1;
+  }
+
+  .experience-trigger-role {
+    font-size: 16px;
+  }
+
+  .experience-expanded {
+    padding: 0 14px 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experience-expanded {
+    animation: none;
+  }
+}

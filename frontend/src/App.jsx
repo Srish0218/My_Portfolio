@@ -14,6 +14,7 @@ function App() {
   const [showTopButton, setShowTopButton] = useState(false);
   const [resumeOpen, setResumeOpen] = useState(false);
   const [activeDocument, setActiveDocument] = useState(null);
+  const [activeExperienceIndex, setActiveExperienceIndex] = useState(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -338,17 +339,17 @@ function App() {
             <p className="hero-description">{profile.about}</p>
 
             <div className="hero-actions">
-              {/*<a className="button button-primary" href="#projects">*/}
-              {/*  {ui.hero?.projectsButton || "Explore my work"}*/}
-              {/*</a>*/}
+              <a className="button button-primary" href="#projects">
+                {ui.hero?.projectsButton || "Explore my work"}
+              </a>
 
               {links.resume && (
                 <button
-                  className="button button-primary"
+                  className="button button-secondary"
                   type="button"
                   onClick={() => setResumeOpen(true)}
                 >
-                  {ui.hero?.resumeButton || "View Resume"}
+                  {ui.hero?.resumeButton || "View résumé"}
                 </button>
               )}
             </div>
@@ -554,25 +555,57 @@ function App() {
             title="Where I’ve made a difference."
           />
 
-          <div className="experience-list">
-            {experience.map((job, index) => (
-              <article
-                className="experience-card reveal"
-                key={`${job.company}-${index}`}
-                style={{ "--reveal-delay": `${index * 100}ms` }}
-              >
-                <div className="experience-date">{job.dates}</div>
-                <div className="experience-details">
-                  <p className="experience-company">{job.company}</p>
-                  <h3>{job.role}</h3>
-                  <ul>
-                    {(job.points || []).map((point, pointIndex) => (
-                      <li key={`${point}-${pointIndex}`}>{point}</li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            ))}
+          <div className="experience-list experience-timeline">
+            {experience.map((job, index) => {
+              const isOpen = activeExperienceIndex === index;
+              const detailsId = `experience-details-${index}`;
+
+              return (
+                <article
+                  className={`experience-item${isOpen ? " is-open" : ""}`}
+                  key={`${job.company}-${index}`}
+                >
+                  <span className="experience-timeline-dot" aria-hidden="true" />
+                  <button
+                    className="experience-trigger"
+                    type="button"
+                    aria-expanded={isOpen}
+                    aria-controls={detailsId}
+                    onClick={() =>
+                      setActiveExperienceIndex(isOpen ? null : index)
+                    }
+                  >
+                    <span className="experience-trigger-date">{job.dates}</span>
+                    <span className="experience-trigger-main">
+                      <span className="experience-trigger-role">{job.role}</span>
+                      <span className="experience-trigger-company">{job.company}</span>
+                    </span>
+                    <span className="experience-trigger-icon" aria-hidden="true">
+                      {isOpen ? "−" : "+"}
+                    </span>
+                  </button>
+
+                  {isOpen && (
+                    <div className="experience-expanded" id={detailsId}>
+                      {(job.location || job.employmentType || job.department) && (
+                        <div className="experience-meta">
+                          {job.location && <span>⌖ {job.location}</span>}
+                          {job.employmentType && <span>{job.employmentType}</span>}
+                          {job.department && <span>{job.department}</span>}
+                        </div>
+                      )}
+                      {(job.points || []).length > 0 && (
+                        <ul>
+                          {job.points.map((point, pointIndex) => (
+                            <li key={`${point}-${pointIndex}`}>{point}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  )}
+                </article>
+              );
+            })}
           </div>
         </section>
 
@@ -598,7 +631,7 @@ function App() {
 
               {profile.achievement.description && (
   <div className="achievement-description">
-    <p>{profile.achievement.description
+    {profile.achievement.description
       .split(/\n\s*\n/)
       .filter(Boolean)
       .map((block, index) => {
@@ -622,7 +655,7 @@ function App() {
             )}
           </div>
         );
-      })}</p>
+      })}
   </div>
 )}
             </article>
@@ -794,7 +827,7 @@ function App() {
                   className="resume-modal-close"
                   type="button"
                   onClick={() => setResumeOpen(false)}
-                  aria-label="Close resume preview"
+                  aria-label="Close résumé preview"
                 >
                   ×
                 </button>
@@ -803,7 +836,7 @@ function App() {
             <iframe
               className="resume-preview-frame"
               src={links.resume}
-              title={`${profile.name} resume PDF`}
+              title={`${profile.name} résumé PDF`}
             />
           </section>
         </div>
