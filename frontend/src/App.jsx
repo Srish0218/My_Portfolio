@@ -840,7 +840,7 @@ function App() {
                   href={links.resume}
                   download="Srishti-Jaitly-Resume.pdf"
                 >
-                  Download résumé <span aria-hidden="true">↓</span>
+                  Download Resume <span aria-hidden="true">↓</span>
                 </a>
                 <button
                   className="resume-modal-close"
