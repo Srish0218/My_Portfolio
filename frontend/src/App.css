@@ -2592,3 +2592,54 @@ body::-webkit-scrollbar,
   min-width: 1px !important;
   min-height: 1px !important;
 }
+
+/* Slightly calmer overall scale, especially for display headings. */
+body {
+  font-size: 15px;
+}
+
+.hero-copy h1 {
+  font-size: clamp(58px, 7vw, 100px);
+  line-height: 0.98;
+}
+
+.section-heading h2 {
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.06;
+}
+
+.achievement-section .section-heading h2 {
+  font-size: clamp(36px, 4.8vw, 60px);
+}
+
+.contact-section .contact-copy h2 {
+  font-size: clamp(2.4rem, 4.5vw, 4.8rem);
+  line-height: 1.02;
+}
+
+.project-card h3 {
+  font-size: 21px;
+}
+
+.experience-details h3 {
+  font-size: 21px;
+}
+
+.achievement-card h3 {
+  font-size: clamp(24px, 2.7vw, 33px);
+}
+
+@media (max-width: 760px) {
+  .hero-copy h1 {
+    font-size: clamp(48px, 14vw, 88px);
+  }
+
+  .section-heading h2,
+  .achievement-section .section-heading h2 {
+    font-size: clamp(34px, 9vw, 48px);
+  }
+
+  .contact-section .contact-copy h2 {
+    font-size: clamp(2.3rem, 10vw, 3.8rem);
+  }
+}
