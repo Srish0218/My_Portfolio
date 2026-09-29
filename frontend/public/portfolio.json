@@ -62,16 +62,19 @@
     {
   "title": "EinsteinAI",
   "type": "AI",
-  "description": "AI-Powered Physics Learning Assistant - Developed a physics-focused conversational assistant powered by Google Gemini 1.5 Flash, with a Streamlit chat interface and context-aware responses that redirect non-physics questions.",
-  "result": "Achieved 95% query accuracy and reduced irrelevant responses by 60%.",
+  "description": "A physics learning assistant built with React, FastAPI, LangChain, and Google Gemini. It provides context-aware answers, redirects non-physics questions, and saves conversations and account usage with Supabase.",
+  "result": "Provides physics-focused explanations, step-by-step solutions, saved chat history, and manual free, question-pack, monthly, and yearly plans.",
   "tools": [
     "Python",
-    "Streamlit",
-    "Google Gemini 1.5 Flash"
+    "React",
+    "FastAPI",
+    "LangChain",
+    "Google Gemini",
+    "Supabase"
   ],
-  "githubUrl": "https://github.com/Srish0218/EinsteinAI",
-  "liveUrl": "https://einsteinai-srish0218.streamlit.app/",
-  "documentationPdf": null
+  "githubUrl": "https://github.com/Srish0218/EinsteinAI-2.0",
+  "liveUrl": "",
+  "documentationPdf": "EinsteinAI-Project-Guide.pdf"
 },
     {
   "title": "Customer Experience Insights API",
