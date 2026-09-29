@@ -2579,3 +2579,16 @@ body,
 .achievement-description ul::-webkit-scrollbar {
   display: block !important;
 }
+
+/* Force the page and nested WebKit scrollbars to a one-pixel hairline. */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar,
+.projects-grid::-webkit-scrollbar,
+.experience-details ul::-webkit-scrollbar,
+.achievement-description::-webkit-scrollbar {
+  width: 1px !important;
+  height: 1px !important;
+  min-width: 1px !important;
+  min-height: 1px !important;
+}
