@@ -394,7 +394,7 @@ function App() {
           <SectionHeading
             number="01"
             label={getSectionLabel("about", "About")}
-            title="Curious about data. Focused on useful outcomes."
+            title="Curious About Data. Focused On Useful Outcomes."
           />
 
           <div className="about-content reveal">
@@ -418,7 +418,7 @@ function App() {
           <SectionHeading
             number="02"
             label={getSectionLabel("projects", "Projects")}
-            title="Selected work"
+            title="Selected Work"
           />
 
           <div className="project-search-row">
@@ -553,7 +553,7 @@ function App() {
           <SectionHeading
             number="03"
             label={getSectionLabel("experience", "Experience")}
-            title="Where I’ve made a difference."
+            title="Where I’ve Made A Difference."
           />
 
           <div className="experience-list experience-timeline">
@@ -619,7 +619,7 @@ function App() {
             <SectionHeading
               number="04"
               label={getSectionLabel("achievement", "Achievement")}
-              title="A moment worth celebrating."
+              title="A Moment Worth Celebrating."
             />
 
             <article className={`achievement-card${achievementOpen ? " is-open" : ""}`}>
@@ -685,7 +685,7 @@ function App() {
           <SectionHeading
             number="05"
             label={getSectionLabel("skills", "Skills")}
-            title="Tools I work with"
+            title="Tools I Work With"
           />
 
           <div className="skills-grid">
@@ -712,7 +712,7 @@ function App() {
           <SectionHeading
             number="06"
             label={getSectionLabel("education", "Education")}
-            title="Learning that shaped my work"
+            title="Learning That Shaped My Work"
           />
 
           <div className="education-list">
