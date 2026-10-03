@@ -340,17 +340,17 @@ function App() {
             <p className="hero-description">{profile.about}</p>
 
             <div className="hero-actions">
-              {/*<a className="button button-primary" href="#projects">*/}
-              {/*  {ui.hero?.projectsButton || "Explore my work"}*/}
-              {/*</a>*/}
+              <a className="button button-primary" href="#projects">
+                {ui.hero?.projectsButton || "Explore my work"}
+              </a>
 
               {links.resume && (
                 <button
-                  className="button button-primary"
+                  className="button button-secondary"
                   type="button"
                   onClick={() => setResumeOpen(true)}
                 >
-                  {ui.hero?.resumeButton || "View Resume" }
+                  {ui.hero?.resumeButton || "View résumé"}
                 </button>
               )}
             </div>
@@ -394,19 +394,19 @@ function App() {
           <SectionHeading
             number="01"
             label={getSectionLabel("about", "About")}
-            title="Curious About Data. Focused On Useful Outcomes."
+            title="Curious about data. Focused on useful outcomes."
           />
 
           <div className="about-content reveal">
             <p>{profile.about}</p>
             <div className="about-links">
               {links.github && (
-                <a href={links.github} target="_blank" rel="noreferrer">
+                <a href={links.github} target="_blank" rel="noopener noreferrer">
                   GitHub <span>↗</span>
                 </a>
               )}
               {links.linkedin && (
-                <a href={links.linkedin} target="_blank" rel="noreferrer">
+                <a href={links.linkedin} target="_blank" rel="noopener noreferrer">
                   LinkedIn <span>↗</span>
                 </a>
               )}
@@ -418,7 +418,7 @@ function App() {
           <SectionHeading
             number="02"
             label={getSectionLabel("projects", "Projects")}
-            title="Selected Work"
+            title="Selected work"
           />
 
           <div className="project-search-row">
@@ -506,7 +506,7 @@ function App() {
                         className="project-link"
                         href={project.githubUrl || project.url}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                       >
                         GitHub <span>↗</span>
                       </a>
@@ -516,7 +516,7 @@ function App() {
                         className="project-link"
                         href={project.liveUrl}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                       >
                         Live project <span>↗</span>
                       </a>
@@ -553,7 +553,7 @@ function App() {
           <SectionHeading
             number="03"
             label={getSectionLabel("experience", "Experience")}
-            title="Where I’ve Made A Difference."
+            title="Where I’ve made a difference."
           />
 
           <div className="experience-list experience-timeline">
@@ -619,7 +619,7 @@ function App() {
             <SectionHeading
               number="04"
               label={getSectionLabel("achievement", "Achievement")}
-              title="A Moment Worth Celebrating."
+              title="A moment worth celebrating."
             />
 
             <article className={`achievement-card${achievementOpen ? " is-open" : ""}`}>
@@ -685,7 +685,7 @@ function App() {
           <SectionHeading
             number="05"
             label={getSectionLabel("skills", "Skills")}
-            title="Tools I Work With"
+            title="Tools I work with"
           />
 
           <div className="skills-grid">
@@ -712,7 +712,7 @@ function App() {
           <SectionHeading
             number="06"
             label={getSectionLabel("education", "Education")}
-            title="Learning That Shaped My Work"
+            title="Learning that shaped my work"
           />
 
           <div className="education-list">
@@ -760,6 +760,8 @@ function App() {
           <a
             className="button button-primary contact-email"
             href={getEmailUrl(links.email)}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             {ui.contact?.emailButton || "Email me"} <span>↗</span>
           </a>
@@ -792,7 +794,7 @@ function App() {
               href={href}
               key={item.key}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <span className="contact-profile-icon" aria-hidden="true">
                 {item.label.slice(0, 1)}
@@ -831,7 +833,7 @@ function App() {
           >
             <header className="resume-modal-header">
               <div>
-                <p className="resume-modal-kicker">RESUME PREVIEW</p>
+                <p className="resume-modal-kicker">RÉSUMÉ PREVIEW</p>
                 <h2 id="resume-modal-title">{profile.name}</h2>
               </div>
               <div className="resume-modal-actions">
@@ -840,13 +842,13 @@ function App() {
                   href={links.resume}
                   download="Srishti-Jaitly-Resume.pdf"
                 >
-                  Download Resume <span aria-hidden="true">↓</span>
+                  Download résumé <span aria-hidden="true">↓</span>
                 </a>
                 <button
                   className="resume-modal-close"
                   type="button"
                   onClick={() => setResumeOpen(false)}
-                  aria-label="Close RESUME preview"
+                  aria-label="Close résumé preview"
                 >
                   ×
                 </button>
@@ -855,7 +857,7 @@ function App() {
             <iframe
               className="resume-preview-frame"
               src={links.resume}
-              title={`${profile.name} RESUME PDF`}
+              title={`${profile.name} résumé PDF`}
             />
           </section>
         </div>
@@ -913,7 +915,7 @@ function App() {
         </span>
         <span>{branding.subtitle || "DATA · AI · AUTOMATION"}</span>
         {links.github && (
-          <a href={links.github} target="_blank" rel="noreferrer">
+          <a href={links.github} target="_blank" rel="noopener noreferrer">
             GitHub ↗
           </a>
         )}
