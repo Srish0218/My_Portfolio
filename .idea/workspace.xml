@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2eee785c-33e3-460b-b528-895fe4e599f3" name="Changes" comment="4 OCT 2026 Commit">
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
-    </list>
+    <list default="true" id="2eee785c-33e3-460b-b528-895fe4e599f3" name="Changes" comment="4 OCT 2026 Commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -119,7 +116,8 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
-    "to.speed.mode.migration.done": "true"
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "/Applications/PyCharm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -182,15 +180,7 @@
       <workItem from="1790498190958" duration="57247000" />
       <workItem from="1790707069662" duration="4181000" />
       <workItem from="1791007381305" duration="2143000" />
-      <workItem from="1791095475181" duration="3880000" />
-    </task>
-    <task id="LOCAL-00003" summary="27 sept 2026 commit">
-      <option name="closed" value="true" />
-      <created>1790512701536</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1790512701536</updated>
+      <workItem from="1791095475181" duration="4521000" />
     </task>
     <task id="LOCAL-00004" summary="27 sept 2026 commit">
       <option name="closed" value="true" />
@@ -576,7 +566,15 @@
       <option name="project" value="LOCAL" />
       <updated>1791099219650</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="4 OCT 2026 Commit">
+      <option name="closed" value="true" />
+      <created>1791099465152</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1791099465152</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
