@@ -44,6 +44,7 @@
   "projects": [
     {
   "title": "CareerGenie.ai",
+  "featured": true,
   "type": "AI",
   "description": "AI-Powered Career Assistant - Built an AI-powered resume and career assistant that analyzes resumes, recommends relevant job roles, identifies skill gaps, and provides personalized career guidance.",
   "result": "Analyzed 10+ resumes and improved job-search efficiency by 40%.",
@@ -61,6 +62,7 @@
 },
     {
   "title": "EinsteinAI",
+  "featured": true,
   "type": "AI",
   "description": "A physics learning assistant built with React, FastAPI, LangChain, and Google Gemini. It provides context-aware answers, redirects non-physics questions, and saves conversations and account usage with Supabase.",
   "result": "Provides physics-focused explanations, step-by-step solutions, saved chat history, and manual free, question-pack, monthly, and yearly plans.",
@@ -78,6 +80,7 @@
 },
     {
   "title": "Customer Experience Insights API",
+  "featured": true,
   "type": ["Automation","AI"],
   "description": "AI-Powered Automation - Built a FastAPI service that automates customer conversation analysis by integrating Gemini-powered insights with SQL data workflows, transcript generation, and OpsGuru reporting.",
   "result": "Automated conversational insights and improved audit accuracy by 40%.",
@@ -95,6 +98,7 @@
 },
     {
   "title": "TweetVibeTracker",
+  "featured": false,
   "type": "AI",
   "description": "AI-Powered Sentiment Analysis - Developed a Streamlit app that uses a TensorFlow deep-learning model to analyze sentiment in single sentences, multi-line text, and uploaded CSV or Excel files. Supports batch processing with downloadable results.",
   "result": "Enabled sentiment analysis across individual text and uploaded datasets, with predictions added directly to processed files.",
@@ -111,6 +115,7 @@
 },
     {
   "title": "DataScaperX",
+  "featured": false,
   "type": ["Web Scraping", "Data Automation"],
   "description": "Built a Streamlit web scraping tool that extracts product details from Flipkart, articles from GeeksForGeeks, and course information from Coursera. Includes optional email notifications for significant data changes.",
   "result": "Automated data collection across e-commerce, educational, and course websites through a single user-friendly interface.",
@@ -127,6 +132,7 @@
 },
     {
   "title": "ElectraPulse",
+  "featured": false,
   "type": ["Data Analytics" , "Visualization"],
   "description": "Built an interactive Streamlit dashboard to explore electric vehicle adoption, geographic distribution, vehicle types, popular makes and models, and electric range. Includes data cleaning, interactive visualizations, and forecasts based on historical registration trends.",
   "result": "Made EV registration trends easier to explore through interactive analysis and forecasting.",
@@ -143,6 +149,7 @@
 },
     {
   "title": "EmoEpicure",
+  "featured": true,
   "type": "AI",
   "description": "AI-Powered Customer Sentiment Analysis - Developed a Streamlit application for restaurant owners to analyze customer reviews using NLP and a Bag of Words model with a trained sentiment classifier. Supports individual and multi-line reviews, Excel uploads, user authentication, and visualizations of sentiment and rating trends.",
   "result": "Enabled restaurant owners to process customer feedback and explore sentiment patterns across reviews and ratings.",

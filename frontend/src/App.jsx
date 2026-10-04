@@ -22,6 +22,7 @@ function App() {
   const [showTopButton, setShowTopButton] = useState(false);
   const [resumeOpen, setResumeOpen] = useState(false);
   const [activeDocument, setActiveDocument] = useState(null);
+  const [activePreview, setActivePreview] = useState(null);
   const [activeExperienceIndex, setActiveExperienceIndex] = useState(null);
   const [achievementOpen, setAchievementOpen] = useState(false);
 
@@ -159,6 +160,7 @@ function App() {
         setMenuOpen(false);
         setResumeOpen(false);
         setActiveDocument(null);
+        setActivePreview(null);
       }
     }
 
@@ -167,7 +169,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (!resumeOpen && !activeDocument) return undefined;
+    if (!resumeOpen && !activeDocument && !activePreview) return undefined;
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -175,7 +177,7 @@ function App() {
     return () => {
       document.body.style.overflow = previousOverflow;
     };
-  }, [resumeOpen, activeDocument]);
+  }, [resumeOpen, activeDocument, activePreview]);
 
   if (loadError) {
     return (
@@ -244,6 +246,13 @@ function App() {
 
     return matchesFilter && searchableText.includes(searchTerm);
   });
+  const orderedVisibleProjects = [
+    ...visibleProjects.filter((project) => project.featured),
+    ...visibleProjects.filter((project) => !project.featured),
+  ];
+  const visibleFeaturedProjects = orderedVisibleProjects.filter(
+    (project) => project.featured,
+  );
 
   const focusGroups = [
     {
@@ -470,10 +479,14 @@ function App() {
             ))}
           </div>
 
+          {visibleFeaturedProjects.length > 0 && (
+            <p className="featured-projects-label">Featured projects</p>
+          )}
+
           <div className="projects-grid">
-            {visibleProjects.map((project, index) => (
+            {orderedVisibleProjects.map((project, index) => (
               <article
-                className="project-card reveal"
+                className={`project-card reveal${project.featured ? " is-featured" : ""}`}
                 key={`${project.title}-${index}`}
                 style={{ "--reveal-delay": `${index * 90}ms` }}
               >
@@ -521,14 +534,28 @@ function App() {
                       </a>
                     )}
                     {project.liveUrl && (
-                      <a
-                        className="project-link"
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Live project <span>↗</span>
-                      </a>
+                      <>
+                        <button
+                          className="project-link project-preview-button"
+                          type="button"
+                          onClick={() =>
+                            setActivePreview({
+                              title: project.title,
+                              url: project.liveUrl,
+                            })
+                          }
+                        >
+                          Preview <span>◉</span>
+                        </button>
+                        <a
+                          className="project-link"
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Live project <span>↗</span>
+                        </a>
+                      </>
                     )}
                     {project.documentationPdf && (
                       <button
@@ -1001,6 +1028,58 @@ function App() {
                 title={`${activeDocument.title} document preview`}
               />
             )}
+          </section>
+        </div>
+      )}
+
+      {activePreview && (
+        <div
+          className="resume-modal-backdrop live-preview-backdrop"
+          role="presentation"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setActivePreview(null);
+          }}
+        >
+          <section
+            className="resume-modal live-preview-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="live-preview-title"
+          >
+            <header className="resume-modal-header">
+              <div>
+                <p className="resume-modal-kicker">LIVE PROJECT PREVIEW</p>
+                <h2 id="live-preview-title">{activePreview.title}</h2>
+              </div>
+              <div className="resume-modal-actions">
+                <a
+                  className="button button-primary resume-download"
+                  href={activePreview.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Open live project <span aria-hidden="true">↗</span>
+                </a>
+                <button
+                  className="resume-modal-close"
+                  type="button"
+                  onClick={() => setActivePreview(null)}
+                  aria-label="Close live project preview"
+                >
+                  ×
+                </button>
+              </div>
+            </header>
+            <p className="live-preview-hint">
+              If the site blocks embedding, use “Open live project” to view it in a new tab.
+            </p>
+            <iframe
+              className="live-preview-frame"
+              src={activePreview.url}
+              title={`${activePreview.title} live preview`}
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
           </section>
         </div>
       )}
