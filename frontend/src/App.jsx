@@ -359,7 +359,7 @@ function App() {
                   type="button"
                   onClick={() => setResumeOpen(true)}
                 >
-                  {ui.hero?.resumeButton || "View résumé"}
+                  {ui.hero?.resumeButton || "View Resume"}
                 </button>
               )}
             </div>
@@ -901,7 +901,7 @@ function App() {
           >
             <header className="resume-modal-header">
               <div>
-                <p className="resume-modal-kicker">RÉSUMÉ PREVIEW</p>
+                <p className="resume-modal-kicker">RESUME PREVIEW</p>
                 <h2 id="resume-modal-title">{profile.name}</h2>
               </div>
               <div className="resume-modal-actions">
@@ -910,13 +910,13 @@ function App() {
                   href={links.resume}
                   download="Srishti-Jaitly-Resume.pdf"
                 >
-                  Download résumé <span aria-hidden="true">↓</span>
+                  Download Resume <span aria-hidden="true">↓</span>
                 </a>
                 <button
                   className="resume-modal-close"
                   type="button"
                   onClick={() => setResumeOpen(false)}
-                  aria-label="Close résumé preview"
+                  aria-label="Close resume preview"
                 >
                   ×
                 </button>
@@ -925,7 +925,7 @@ function App() {
             <iframe
               className="resume-preview-frame"
               src={links.resume}
-              title={`${profile.name} résumé PDF`}
+              title={`${profile.name} resume PDF`}
             />
           </section>
         </div>
