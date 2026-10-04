@@ -333,15 +333,15 @@
     "title": "Badge Of Honour",
     "issuer": "WyzMindz Solutions Pvt. Ltd.",
     "date": "2025",
-    "file": "docs/BadgeOfHounour.jpeg",
-    "type": "jpeg"
+    "file": "docs/Badges of Honor.pdf",
+    "type": "pdf"
   },
     {
     "title": "SuryoJasvi AI Festival 2025",
     "issuer": "WyzMindz Solutions Pvt. Ltd.",
     "date": "2025",
-    "file": "docs/SuryojasviAIFestival.jpeg",
-    "type": "jpeg"
+    "file": "docs/AiFestival.pdf",
+    "type": "pdf"
   }
 ]
 }
