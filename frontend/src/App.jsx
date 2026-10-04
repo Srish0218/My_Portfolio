@@ -762,6 +762,8 @@ function App() {
                     setActiveDocument({
                       title: certificate.title,
                       url: certificate.file || certificate.url,
+                      isCertificate: true,
+                      allowDownload: false,
                       type:
                         certificate.type ||
                         (certificate.file || certificate.url || "")
@@ -948,7 +950,7 @@ function App() {
             <header className="resume-modal-header">
               <div>
                 <p className="resume-modal-kicker">
-                  {isImageDocument(activeDocument)
+                  {activeDocument.isCertificate
                     ? "CERTIFICATE PREVIEW"
                     : activeDocument.type?.toLowerCase().includes("pdf")
                       ? "DOCUMENT PREVIEW"
@@ -957,13 +959,15 @@ function App() {
                 <h2 id="project-document-title">{activeDocument.title}</h2>
               </div>
               <div className="resume-modal-actions">
-                <a
-                  className="button button-primary resume-download"
-                  href={activeDocument.url}
-                  download
-                >
-                  Download file <span aria-hidden="true">↓</span>
-                </a>
+                {activeDocument.allowDownload !== false && (
+                  <a
+                    className="button button-primary resume-download"
+                    href={activeDocument.url}
+                    download
+                  >
+                    Download file <span aria-hidden="true">↓</span>
+                  </a>
+                )}
                 <button
                   className="resume-modal-close"
                   type="button"
@@ -975,16 +979,25 @@ function App() {
               </div>
             </header>
             {isImageDocument(activeDocument) ? (
-              <div className="document-image-viewer">
+              <div
+                className="document-image-viewer"
+                onContextMenu={(event) => event.preventDefault()}
+              >
                 <img
                   src={activeDocument.url}
                   alt={`${activeDocument.title} certificate`}
+                  draggable="false"
+                  onContextMenu={(event) => event.preventDefault()}
                 />
               </div>
             ) : (
               <iframe
                 className="resume-preview-frame"
-                src={activeDocument.url}
+                src={
+                  activeDocument.isCertificate
+                    ? `${activeDocument.url}#toolbar=0&navpanes=0&scrollbar=0`
+                    : activeDocument.url
+                }
                 title={`${activeDocument.title} document preview`}
               />
             )}
