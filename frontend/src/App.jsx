@@ -2,6 +2,14 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 const DATA_URL = "/portfolio.json";
+const IMAGE_TYPES = new Set(["png", "jpg", "jpeg", "webp", "gif"]);
+
+function isImageDocument(document) {
+  const declaredType = document.type?.toLowerCase().split("/").pop();
+  const filePath = (document.url || "").split(/[?#]/)[0];
+  const extension = filePath.split(".").pop().toLowerCase();
+  return IMAGE_TYPES.has(declaredType || extension);
+}
 
 function App() {
   const [profile, setProfile] = useState(null);
@@ -92,6 +100,7 @@ function App() {
       "achievement",
       "skills",
       "education",
+      "certificates",
       "contact",
     ];
 
@@ -202,6 +211,10 @@ function App() {
   const experience = profile.experience || [];
   const skills = profile.skills || [];
   const education = profile.education || [];
+  const certificates = (profile.certificates || []).filter(
+    (certificate) => certificate.file || certificate.url,
+  );
+  const visibleNavigation = navigation;
 
   const filters = [
     "All",
@@ -306,7 +319,7 @@ function App() {
         </button>
 
         <nav className={`site-nav${menuOpen ? " is-open" : ""}`}>
-          {navigation.map((item) => (
+          {visibleNavigation.map((item) => (
             <a
               className={activeSection === item.id ? "active" : ""}
               key={item.id}
@@ -340,13 +353,9 @@ function App() {
             <p className="hero-description">{profile.about}</p>
 
             <div className="hero-actions">
-              <a className="button button-primary" href="#projects">
-                {ui.hero?.projectsButton || "Explore my work"}
-              </a>
-
               {links.resume && (
                 <button
-                  className="button button-secondary"
+                  className="button button-primary"
                   type="button"
                   onClick={() => setResumeOpen(true)}
                 >
@@ -735,6 +744,65 @@ function App() {
           </div>
         </section>
 
+        <section className="content-section certificates-section" id="certificates">
+          <SectionHeading
+            number="07"
+            label={getSectionLabel("certificates", "Certificates")}
+            title="Learning, recognized."
+          />
+          {certificates.length > 0 ? (
+            <div className="certificates-grid">
+              {certificates.map((certificate, index) => (
+                <button
+                  className="certificate-card reveal"
+                  key={`${certificate.title}-${index}`}
+                  style={{ "--reveal-delay": `${index * 80}ms` }}
+                  type="button"
+                  onClick={() =>
+                    setActiveDocument({
+                      title: certificate.title,
+                      url: certificate.file || certificate.url,
+                      type:
+                        certificate.type ||
+                        (certificate.file || certificate.url || "")
+                          .split(/[?#]/)[0]
+                          .split(".")
+                          .pop()
+                          .toLowerCase(),
+                    })
+                  }
+                >
+                  <span className="certificate-number">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="certificate-copy">
+                    <strong>{certificate.title}</strong>
+                    {(certificate.issuer || certificate.date) && (
+                      <span className="certificate-meta">
+                        {[certificate.issuer, certificate.date]
+                          .filter(Boolean)
+                          .join(" · ")}
+                      </span>
+                    )}
+                    {certificate.description && (
+                      <span className="certificate-description">
+                        {certificate.description}
+                      </span>
+                    )}
+                  </span>
+                  <span className="certificate-open" aria-hidden="true">
+                    View certificate ↗
+                  </span>
+                </button>
+              ))}
+            </div>
+          ) : (
+            <p className="certificates-empty">
+              Certificate previews will appear here.
+            </p>
+          )}
+        </section>
+
         <section className="contact-section" id="contact">
   <div className="contact-card contact-card-pro reveal">
     <span className="contact-orb" aria-hidden="true" />
@@ -879,7 +947,13 @@ function App() {
           >
             <header className="resume-modal-header">
               <div>
-                <p className="resume-modal-kicker">PROJECT DOCUMENTATION</p>
+                <p className="resume-modal-kicker">
+                  {isImageDocument(activeDocument)
+                    ? "CERTIFICATE PREVIEW"
+                    : activeDocument.type?.toLowerCase().includes("pdf")
+                      ? "DOCUMENT PREVIEW"
+                      : "PROJECT DOCUMENTATION"}
+                </p>
                 <h2 id="project-document-title">{activeDocument.title}</h2>
               </div>
               <div className="resume-modal-actions">
@@ -888,7 +962,7 @@ function App() {
                   href={activeDocument.url}
                   download
                 >
-                  Download PDF <span aria-hidden="true">↓</span>
+                  Download file <span aria-hidden="true">↓</span>
                 </a>
                 <button
                   className="resume-modal-close"
@@ -900,11 +974,20 @@ function App() {
                 </button>
               </div>
             </header>
-            <iframe
-              className="resume-preview-frame"
-              src={activeDocument.url}
-              title={`${activeDocument.title} project documentation PDF`}
-            />
+            {isImageDocument(activeDocument) ? (
+              <div className="document-image-viewer">
+                <img
+                  src={activeDocument.url}
+                  alt={`${activeDocument.title} certificate`}
+                />
+              </div>
+            ) : (
+              <iframe
+                className="resume-preview-frame"
+                src={activeDocument.url}
+                title={`${activeDocument.title} document preview`}
+              />
+            )}
           </section>
         </div>
       )}

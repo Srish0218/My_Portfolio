@@ -327,5 +327,21 @@
       "place": "Ludhiana, Punjab",
       "dates": "2019 — 2020"
     }
-  ]
+  ],
+  "certificates": [
+  {
+    "title": "Badge Of Honour",
+    "issuer": "WyzMindz Solutions Pvt. Ltd.",
+    "date": "2025",
+    "file": "docs/BadgeOfHounour.jpeg",
+    "type": "jpeg"
+  },
+    {
+    "title": "SuryoJasvi AI Festival 2025",
+    "issuer": "WyzMindz Solutions Pvt. Ltd.",
+    "date": "2025",
+    "file": "docs/SuryojasviAIFestival.jpeg",
+    "type": "jpeg"
+  }
+]
 }
