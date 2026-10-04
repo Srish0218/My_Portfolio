@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Srishti Jaitly — Data Scientist</title>
+  <desc id="desc">Data science, AI, and automation portfolio preview.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#080d1a"/>
+      <stop offset="0.55" stop-color="#10152b"/>
+      <stop offset="1" stop-color="#0b1c21"/>
+    </linearGradient>
+    <linearGradient id="name" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#a7f5dd"/>
+      <stop offset="0.48" stop-color="#b8d9ff"/>
+      <stop offset="1" stop-color="#a79af5"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#38dcae" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#38dcae" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0V42" fill="none" stroke="#aab8e8" stroke-opacity=".055" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" rx="24" fill="url(#background)"/>
+  <rect width="1200" height="630" rx="24" fill="url(#grid)"/>
+  <ellipse cx="970" cy="330" rx="370" ry="340" fill="url(#glow)"/>
+  <g fill="none" stroke="#a7f5dd" stroke-opacity=".19">
+    <circle cx="938" cy="304" r="174" stroke-width="1.5"/>
+    <circle cx="938" cy="304" r="132" stroke="#aaa0ff" stroke-opacity=".2"/>
+    <ellipse cx="938" cy="304" rx="214" ry="88" transform="rotate(-28 938 304)"/>
+    <ellipse cx="938" cy="304" rx="214" ry="88" transform="rotate(34 938 304)"/>
+  </g>
+  <circle cx="938" cy="304" r="91" fill="#18243a" stroke="#d8e5ff" stroke-opacity=".12"/>
+  <text x="938" y="326" text-anchor="middle" fill="#8ff5d5" font-family="Arial, sans-serif" font-size="64" font-weight="700">SJ</text>
+  <circle cx="1122" cy="170" r="5" fill="#8ff5d5"/>
+  <circle cx="787" cy="444" r="4" fill="#a99cff"/>
+  <rect x="74" y="76" width="58" height="58" rx="29" fill="#111c30" stroke="#8ff5d5" stroke-opacity=".42"/>
+  <text x="103" y="113" text-anchor="middle" fill="#8ff5d5" font-family="Arial, sans-serif" font-size="20" font-weight="700">SJ</text>
+  <text x="151" y="101" fill="#eef3ff" font-family="Arial, sans-serif" font-size="20" font-weight="700">SRISHTI JAITLY</text>
+  <text x="151" y="123" fill="#9ca9c2" font-family="Arial, sans-serif" font-size="12" letter-spacing="3">DATA · AI · AUTOMATION</text>
+  <text x="76" y="255" fill="#a7f5dd" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="3">DATA SCIENTIST · LUDHIANA, INDIA</text>
+  <text x="70" y="356" fill="url(#name)" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="700" letter-spacing="-3">Srishti Jaitly</text>
+  <text x="76" y="412" fill="#eef3ff" font-family="Arial, sans-serif" font-size="26" font-weight="500">Data science, AI, and useful outcomes.</text>
+  <path d="M76 480H650" stroke="#8ff5d5" stroke-opacity=".45"/>
+  <text x="76" y="523" fill="#aab5cc" font-family="Arial, sans-serif" font-size="16">Machine learning · NLP · LLM automation · Data workflows</text>
+  <rect x="75" y="570" width="9" height="9" rx="4.5" fill="#8ff5d5"/>
+  <text x="98" y="579" fill="#9ca9c2" font-family="Arial, sans-serif" font-size="13" letter-spacing="2">PORTFOLIO · PROJECTS · EXPERIENCE</text>
+</svg>
